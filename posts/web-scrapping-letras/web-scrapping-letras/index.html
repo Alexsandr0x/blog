@@ -1,0 +1,176 @@
+<!doctype html><html lang=pt-br><head><title>Requests + BeautifulSoup para captura de dados web! &ndash; Alexsandro</title><meta name=viewport content="width=device-width,initial-scale=1"><meta charset=utf-8><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin=anonymous><link rel=stylesheet href=http://alexsandro.dev/css/palettes/base16-dark.css><link rel=stylesheet href=http://alexsandro.dev/css/risotto.css><link rel=stylesheet href=http://alexsandro.dev/css/custom.css></head><body><div class=page><header class=page__header><h1 class=page__logo><a href=http://alexsandro.dev/ class=page__logo-inner>Alexsandro</a></h1><nav class="page__nav main-nav"><ul><li class=main-nav__item><a class=nav-main-item href=http://alexsandro.dev/about/ title>About</a></li><li class=main-nav__item><a class=nav-main-item href=http://alexsandro.dev/posts/ title>Posts</a></li><li class=main-nav__item><a class=nav-main-item href=http://alexsandro.dev/lessons/ title>Lessons</a></li></ul></nav></header><section class=page__body><p align=right><span class=active><b>Português</b></span></p><header class=content__header><h1>Requests + BeautifulSoup para captura de dados web!</h1></header><div class=content__body><p>Dentro do mercado de trabalho ou em projetos é comum a necessidade de criarmos nossa própria base de dados de algum assunto para depois fazermos alguma análise. Isso pode acontecer com qualquer tipo de site que não nos proporcione uma API aberta.</p><p>Dessa forma podemos aprender conceitos simples de raspagem de dados usando Python simulando um problema desses. Nesse caso vamos supor um seguinte problema:</p><p>Vamos supor que você queira entender características de um certo cantor ou banda, qualquer informação que você possa usar para comparar dois músicos diferentes. Nós podemos compará-los por estilos, &lsquo;plays&rsquo; no Spotify, &lsquo;views&rsquo; no Youtube. Porém se quisermos ir mais fundo e entender as letras desses músicos, para analisar sentimento ou similaridade de palavras entre músicos, precisamos montar uma base de dados com essas letras. E é isso que vamos fazer!</p><p><strong>No final deste texto vamos sair com um script que dado um músico ele nos retorna todas as letras de suas músicas!</strong></p><p>Ok! então precisamos de uma fonte de dados para capturar essas letras. Para alguns musicos internacionais existem APIs que nos trazem esse dado que você pode <strong><a href="https://www.programmableweb.com/category/lyrics/apis?category=20278">ver aqui</a></strong> mas há uma falta de músicos brasileiros e como queremos treinar a raspagem de dados vamos nos forçar a capturar esses dados de um site de forma mais “bruta”, o escolhido foi o <strong><a href=https://www.letras.com>Letras.com</a></strong>.</p><p>Para isso, vamos tentar entender o alvo de nossa captura, se acessarmos, por exemplo, a página de algum artista e analisar o HTML vamos conseguir notar padrões que podem ser interessantes para gente.</p><p>Vamos acessar a pagina do musico <a href=https://www.letras.com/rincon-sapiencia/>Rincon Sapência</a> como exemplo. Logo de início vemos o nome do músico, mais tocadas e <strong>todas as músicas</strong>, sendo este parte da página uma lista com, como o próprio nome diz, todas as músicas daquele cantor. agora é só analisar o HTML. Inspecionando o elemento dessa pequena parte:</p><figure><img src=/images/web-scrapping-letras/letras_todas_as_musicas.png></figure><p>Encontramos uma estrutura parecida com esta:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cnt-list--alp&#34;</span>&gt;
+</span></span><span style=display:flex><span>	&lt;<span style=color:#f92672>ul</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cnt-list&#34;</span>&gt; 
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>li</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;A&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/rincon-sapiencia/a-coisa-ta-preta/&#34;</span>&gt;A Coisa Tá Preta&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>li</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/rincon-sapiencia/a-noite-e-nossa/&#34;</span>&gt;A Noite é Nossa&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>li</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/rincon-sapiencia/a-volta-pra-casa/&#34;</span>&gt;A Volta pra Casa&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>li</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/rincon-sapiencia/afro-rep/&#34;</span>&gt;Afro Rep&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>li</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/rincon-sapiencia/amores-as-escuras/&#34;</span>&gt;Amores às Escuras&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>li</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/rincon-sapiencia/andar-com-fe/&#34;</span>&gt;Andar Com Fé&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>li</span>&gt;&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/rincon-sapiencia/rea-de-conforto/&#34;</span>&gt;Área de Conforto&lt;/<span style=color:#f92672>a</span>&gt;&lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>	&lt;/<span style=color:#f92672>ul</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>div</span>&gt;
+</span></span></code></pre></div><p>Nesse bloco de HTML já entendemos que uma vez na página do músico conseguimos o <strong>nome da música</strong> e um <strong>link</strong> para cada música. Esse será nosso primeiro trabalho.</p><p>Vamos fazer agora, em Python, exatamente o que fizemos aqui: Acessar a página de um músico e listar as suas músicas.</p><p>Se a primeira coisa que vamos fazer é <strong>acessar uma página</strong> precisamos então usar a biblioteca <strong>requests</strong> do python para a tal, uma requisição get, com a URL do que queremos pegar deve ser o bastante:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> requests
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_all_musics</span>(musician):
+</span></span><span style=display:flex><span>	all_musics <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Url que iremos fazer a raspagem, nesse caso, a url </span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># base do Letras + o nome do musico que queremos trabalhar.</span>
+</span></span><span style=display:flex><span>	url <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;https://www.letras.com/</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>format(musician)
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Requisição web para a nossa url ja montada</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># isso no retornara um resultado http</span>
+</span></span><span style=display:flex><span>	response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(url)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Desse resultado, podemos pegar o seu conteudo, que sera uma lista de bytes</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># representando o nosso html</span>
+</span></span><span style=display:flex><span>	html <span style=color:#f92672>=</span> response<span style=color:#f92672>.</span>content
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> all_musics
+</span></span></code></pre></div><p>Do jeito que as coisas estão o código ainda retorna apenas uma lista vazia. Ainda precisamos popular a lista <code>all_musics</code> com o conteúdo dos elementos que havíamos observado no HTML do site.</p><p>Como já temos o HTML basta trabalharmos nele, vamos usar a biblioteca <strong><a href=https://www.crummy.com/software/BeautifulSoup/bs4/doc/>BeautifulSoup</a></strong>. Ela vai facilitar filtrarmos elementos por id e classe sem precisarmos aprender seletores CSS ou XPath (ainda reservo um post só para isso).</p><p>Para instalar use pipy:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pip install beautifulsoup4
+</span></span></code></pre></div><p>Agora vamos transformar o conteúdo de nossa requisição em um objeto que possa ser filtrado para acharmos a url e o nome da musica.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> requests
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> bs4 <span style=color:#f92672>import</span> BeautifulSoup
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_all_musics</span>(musician):
+</span></span><span style=display:flex><span>	all_musics <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Url que iremos fazer a raspagem, nesse caso, a url </span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># base do Letras + o nome do musico que queremos trabalhar.</span>
+</span></span><span style=display:flex><span>	url <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;https://www.letras.com/</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>format(musician)
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Requisição web para a nossa url ja montada</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># isso no retornara um resultado http</span>
+</span></span><span style=display:flex><span>	response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(url)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Desse resultado, podemos pegar o seu conteudo, que sera uma lista de bytes</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># representando o nosso html</span>
+</span></span><span style=display:flex><span>	html <span style=color:#f92672>=</span> response<span style=color:#f92672>.</span>content
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># faz o &#39;parsing&#39; para um objeto em que possamos trabalhar</span>
+</span></span><span style=display:flex><span>	soup <span style=color:#f92672>=</span> BeautifulSoup(html, <span style=color:#e6db74>&#39;html.parser&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># captura o elemento div que tenha a classe &#39;cnt-list--alp&#39;</span>
+</span></span><span style=display:flex><span>	all_songs <span style=color:#f92672>=</span> soup<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;div&#39;</span>, {<span style=color:#e6db74>&#39;class&#39;</span>: <span style=color:#e6db74>&#39;cnt-list--alp&#39;</span>})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Do elemento armazenado em all_songs, procura em seus filhos por</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># elementos de tag &#39;li&#39; (aqui chegamos nas linhas da lista)</span>
+</span></span><span style=display:flex><span>	song_list <span style=color:#f92672>=</span> all_songs<span style=color:#f92672>.</span>find_all(<span style=color:#e6db74>&#39;li&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> all_musics
+</span></span></code></pre></div><p>Ainda não retornamos nada, mas se quisermos retornar o <code>song_list</code> teremos algo parecido com isso:</p><pre tabindex=0><code>[
+	&lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/a-coisa-ta-preta/&#34; id=&#34;A&#34;&gt;A Coisa Tá Preta&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/a-noite-e-nossa/&#34;&gt;A Noite é Nossa&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/a-volta-pra-casa/&#34;&gt;A Volta pra Casa&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/afro-rep/&#34;&gt;Afro Rep&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/amores-as-escuras/&#34;&gt;Amores às Escuras&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/andar-com-fe/&#34;&gt;Andar Com Fé&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/rea-de-conforto/&#34;&gt;Área de Conforto&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/autentico-x-excentrico-x-incomparavel/&#34;&gt;Autêntico X Excêntrico X Incomparável&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/batidao/&#34; id=&#34;B&#34;&gt;Batidão&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/bencao/&#34;&gt;Benção (part. William Magalhães)&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/coisas-de-brasil/&#34; id=&#34;C&#34;&gt;Coisas de Brasil&lt;/a&gt;&lt;/li&gt;,
+	 [...]
+</code></pre><p>Isso tudo é uma lista com todas as músicas presentes naquela página, agora só precisamos extrair a url e o nome da musica. Para isso continuaremos usando o BeautifulSoup, adicionamos ao código anterior as linhas:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>	<span style=color:#66d9ef>for</span> song_elem <span style=color:#f92672>in</span> song_list:
+</span></span><span style=display:flex><span>		<span style=color:#75715e># Note que o href esta dentro da tag &#39;a&#39;, que esta dentro do nosso item capturado &#39;li&#39;</span>
+</span></span><span style=display:flex><span>		link <span style=color:#f92672>=</span> song_elem<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;a&#39;</span>)[<span style=color:#e6db74>&#39;href&#39;</span>]
+</span></span><span style=display:flex><span>		name <span style=color:#f92672>=</span> song_elem<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;a&#39;</span>)<span style=color:#f92672>.</span>text
+</span></span><span style=display:flex><span>		<span style=color:#75715e># Concatena com a url base</span>
+</span></span><span style=display:flex><span>		link <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;https://www.letras.com&#39;</span> <span style=color:#f92672>+</span> link
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		song <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>			<span style=color:#e6db74>&#34;url&#34;</span>: link,
+</span></span><span style=display:flex><span>			<span style=color:#e6db74>&#34;name&#34;</span>: name
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		all_musics<span style=color:#f92672>.</span>append(song)
+</span></span></code></pre></div><p>Dessa forma temos agora na lista <code>all_musics</code> um dicionário com nome e link de cada música! Conseguimos com poucas linhas de código já fazermos algo interessante, mas ainda não é nosso objetivo final, nosso próximo passo é pegar essa lista e para cada música capturar a letra dessa música acessando a url.</p><figure><img src=/images/web-scrapping-letras/letras_letra_da_musica.png></figure><p>Inspecionando o elemento que armazena a letra temos isso:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cnt-letra p402_premium&#34;</span> <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;font-size: 19px;&#34;</span>&gt;
+</span></span><span style=display:flex><span>	&lt;<span style=color:#f92672>article</span>&gt;
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>p</span>&gt;Salve!
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;OK!&lt;<span style=color:#f92672>br</span>&gt;
+</span></span><span style=display:flex><span>		Rincon Sapiência, conhecido também como Manicongo, certo?
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Quando alguém fala que eu não sou um MC acima da média, eu falo&lt;<span style=color:#f92672>br</span>&gt;
+</span></span><span style=display:flex><span>		(Ahn? Ahn? Ahn? Ahn?)&lt;<span style=color:#f92672>br</span>&gt;
+</span></span><span style=display:flex><span>		Eu não entendo nada, pai!&lt;<span style=color:#f92672>br</span>&gt;
+</span></span><span style=display:flex><span>		(Ahn? Ahn? Ahn? Ahn?)&lt;<span style=color:#f92672>br</span>&gt;
+</span></span><span style=display:flex><span>		A cultura do MC ainda vive, certo? Se depender de mim&lt;<span style=color:#f92672>br</span>&gt;
+</span></span><span style=display:flex><span>		Vam&#39;bora!&lt;/<span style=color:#f92672>p</span>&gt;
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>p</span>&gt;Meu verso é livre, ninguém me cancela
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Tipo Mandela saindo da cela
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Minhas linha voando cheia de cerol
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;E dá dó das cabeça quando rela nela
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Partiu para o baile, fugiu da balela
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Batemos tambores, eles panela
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Roubamos a cena, não tem canivete
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;As patty derrete que nem muçarela
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Quente que nem a chapinha no crespo
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Não, crespos estão se armando
+</span></span><span style=display:flex><span>		&lt;<span style=color:#f92672>br</span>&gt;Faço questão de botar no meu texto&lt;<span style=color:#f92672>br</span>&gt;
+</span></span></code></pre></div><p>Dessa forma, conseguimos fazer um script parecido com o anterior, porém agora filtrando pela classe <code>cnt-letra</code> e pegando todo o conteúdo de texto nele contido, a gente pode fazer isso dessa forma:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_lyric_from_url</span>(url):
+</span></span><span style=display:flex><span>	response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(url)
+</span></span><span style=display:flex><span>	soup <span style=color:#f92672>=</span> BeautifulSoup(response<span style=color:#f92672>.</span>content, <span style=color:#e6db74>&#39;lxml&#39;</span>)
+</span></span><span style=display:flex><span>	lyric <span style=color:#f92672>=</span> soup<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;div&#39;</span>, <span style=color:#e6db74>&#39;cnt-letra&#39;</span>)<span style=color:#f92672>.</span>getText(separator<span style=color:#f92672>=</span><span style=color:#e6db74>&#39; &#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> lyric
+</span></span></code></pre></div><p>Se rodarmos o método <code>get_lyric_from_url</code> para qualquer url de musica do Letras.com já teremos, em formato de string, a letra desta música.</p><p>Agora já temos um método que captura todas as músicas de um determinado músico e um outro método que para o link dessa musica captura sua letra. Para não me alongar muito esse post fica por aqui. Eu pretendo ainda usar esse código para trabalhar com algum texto sobre processamento de linguagem natural e visualização de dados mas isso fica para o futuro.</p><p>Esse é o código final de todo o nosso trabalho, com o bônus que ainda gera um arquivo json armazenado tudo que foi capturado!</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> json
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> requests
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> bs4 <span style=color:#f92672>import</span> BeautifulSoup
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_all_musics</span>(musician):
+</span></span><span style=display:flex><span>	all_musics <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Url que iremos fazer a raspagem, nesse caso, a url </span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># base do Letras + o nome do musico que queremos trabalhar.</span>
+</span></span><span style=display:flex><span>	url <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;https://www.letras.com/</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>format(musician)
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Requisição web para a nossa url ja montada</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># isso no retornara um resultado http</span>
+</span></span><span style=display:flex><span>	response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(url)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Desse resultado, podemos pegar o seu conteudo, que sera uma lista de bytes</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># representando o nosso html</span>
+</span></span><span style=display:flex><span>	html <span style=color:#f92672>=</span> response<span style=color:#f92672>.</span>content
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># faz o &#39;parsing&#39; para um objeto em que possamos trabalhar</span>
+</span></span><span style=display:flex><span>	soup <span style=color:#f92672>=</span> BeautifulSoup(html, <span style=color:#e6db74>&#39;html.parser&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># captura o elemento div que tenha a classe &#39;cnt-list--alp&#39;</span>
+</span></span><span style=display:flex><span>	all_songs <span style=color:#f92672>=</span> soup<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;div&#39;</span>, {<span style=color:#e6db74>&#39;class&#39;</span>: <span style=color:#e6db74>&#39;cnt-list--alp&#39;</span>})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Do elemento armazenado em all_songs, procura em seus filhos por</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># elementos de tag &#39;li&#39; (aqui chegamos nas linhas da lista)</span>
+</span></span><span style=display:flex><span>	song_list <span style=color:#f92672>=</span> all_songs<span style=color:#f92672>.</span>find_all(<span style=color:#e6db74>&#39;li&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> song_elem <span style=color:#f92672>in</span> song_list:
+</span></span><span style=display:flex><span>		<span style=color:#75715e># Note que o href esta dentro da tag &#39;a&#39;, que esta dentro do nosso item capturado &#39;li&#39;</span>
+</span></span><span style=display:flex><span>		link <span style=color:#f92672>=</span> song_elem<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;a&#39;</span>)[<span style=color:#e6db74>&#39;href&#39;</span>]
+</span></span><span style=display:flex><span>		name <span style=color:#f92672>=</span> song_elem<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;a&#39;</span>)<span style=color:#f92672>.</span>text
+</span></span><span style=display:flex><span>		<span style=color:#75715e># Concatena com a url base</span>
+</span></span><span style=display:flex><span>		link <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;https://www.letras.com&#39;</span> <span style=color:#f92672>+</span> link
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		song <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>			<span style=color:#e6db74>&#34;url&#34;</span>: link,
+</span></span><span style=display:flex><span>			<span style=color:#e6db74>&#34;name&#34;</span>: name
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		all_musics<span style=color:#f92672>.</span>append(song)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> all_musics
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_lyric_from_url</span>(url):
+</span></span><span style=display:flex><span>	response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(url)
+</span></span><span style=display:flex><span>	soup <span style=color:#f92672>=</span> BeautifulSoup(response<span style=color:#f92672>.</span>content, <span style=color:#e6db74>&#39;lxml&#39;</span>)
+</span></span><span style=display:flex><span>	lyric <span style=color:#f92672>=</span> soup<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;div&#39;</span>, <span style=color:#e6db74>&#39;cnt-letra&#39;</span>)<span style=color:#f92672>.</span>getText(separator<span style=color:#f92672>=</span><span style=color:#e6db74>&#39; &#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> lyric
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>musician_code <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;rincon-sapiencia&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>songs <span style=color:#f92672>=</span> get_all_musics(musician_code)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> song <span style=color:#f92672>in</span> songs:
+</span></span><span style=display:flex><span>	lyric <span style=color:#f92672>=</span> get_lyric_from_url(x[<span style=color:#ae81ff>0</span>][<span style=color:#e6db74>&#39;url&#39;</span>])
+</span></span><span style=display:flex><span>	song[<span style=color:#e6db74>&#39;lyric&#39;</span>] <span style=color:#f92672>=</span> lyric
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#39;songs_</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>.json&#39;</span><span style=color:#f92672>.</span>format(musician_code), <span style=color:#e6db74>&#39;w&#39;</span>) <span style=color:#66d9ef>as</span> file_o:
+</span></span><span style=display:flex><span>	file_o<span style=color:#f92672>.</span>write(json<span style=color:#f92672>.</span>dumps(songs))
+</span></span></code></pre></div></div><footer class=content__footer></footer></section><section class=page__aside><div class=aside__about><ul class=aside__social-links></ul></div><hr><div class=aside__content><p>Um simples tutorial apresentando metodo de web-scrapping com BeautifulSoup</p><p>2018-09-01</p></div></section><footer class=page__footer><p class=copyright></p><p class=advertisement>Powered by <a href=https://gohugo.io/>hugo</a> and <a href=https://github.com/joeroe/risotto>risotto</a>.</p></footer></div></body></html>
