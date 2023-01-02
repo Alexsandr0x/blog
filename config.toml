@@ -1,0 +1,39 @@
+baseURL = 'http://alexsandro.dev/'
+languageCode = 'en'
+defaultContentLanguage = 'pt-br'
+title = 'Alexsandro'
+theme = 'risotto'
+
+[params]
+noindex = false
+
+[languages]
+  [languages.pt-br]
+    languageName = 'Português'
+    weight = 1
+
+  [languages.en]
+    languageName = 'English'
+    weight = 2
+
+
+
+
+[menu]
+  [[menu.main]]
+    indentifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "lessons"
+    name = "Lessons"
+    url = "/lessons/"
+    weight = 3
