@@ -1,0 +1,37 @@
+<title>{{ with .Title }}{{ . }} &ndash; {{end}}{{ .Site.Title }}</title>
+
+{{ $desc := .Params.description | default .Site.Params.about.description }}
+<meta name="description" content="{{ $desc }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+{{ if .Site.Params.noindex }}<meta name="robots" content="noindex" />{{ end }}
+
+{{ $ogImage := "" }}
+{{ $imgMatches := findRE `src="(/images/[^"]+)"` .RawContent 1 }}
+{{ if $imgMatches }}
+  {{ $ogImage = index $imgMatches 0 | replaceRE `src="([^"]+)"` "$1" | absURL }}
+{{ end }}
+
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ with .Title }}{{ . }} – {{ end }}{{ .Site.Title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ if .IsPage }}<meta property="og:type" content="article">
+{{ else }}<meta property="og:type" content="website">
+{{ end }}
+{{ with $ogImage }}<meta property="og:image" content="{{ . }}">{{ end }}
+
+<meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ with .Title }}{{ . }} – {{ end }}{{ .Site.Title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+{{ with $ogImage }}<meta name="twitter:image" content="{{ . }}">{{ end }}
+
+<link rel="icon" type="image/png" href="{{ "favicon.png" | absURL }}">
+
+<!-- FontAwesome <https://fontawesome.com/> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+<!-- risotto theme -->
+<link rel="stylesheet" href="{{ printf "css/palettes/%s.css" (.Site.Params.theme.palette | default "base16-dark") | absURL }}">
+<link rel="stylesheet" href="{{ "css/risotto.css" | absURL }}">
+<link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
