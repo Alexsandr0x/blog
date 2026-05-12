@@ -33,6 +33,12 @@ icon = "fa-brands fa-github"
 
 
 
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = true
+    noClasses = false
+
 [menu]
   [[menu.main]]
     identifier = "about"
