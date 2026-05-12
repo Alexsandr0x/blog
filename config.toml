@@ -1,4 +1,4 @@
-baseURL = 'http://alexsandro.dev/'
+baseURL = 'https://alexsandro.dev/'
 languageCode = 'en'
 defaultContentLanguage = 'pt-br'
 title = 'Alexsandro'
@@ -6,6 +6,20 @@ theme = 'risotto'
 
 [params]
 noindex = false
+
+[params.about]
+title = "Alex"
+description = "Engenheiro de dados, professor e entusiasta de Python."
+
+[[params.socialLinks]]
+url = "https://linkedin.com/in/Alexsandr0x"
+title = "LinkedIn"
+icon = "fa-brands fa-linkedin"
+
+[[params.socialLinks]]
+url = "https://github.com/Alexsandr0x"
+title = "GitHub"
+icon = "fa-brands fa-github"
 
 [languages]
   [languages.pt-br]
@@ -21,7 +35,7 @@ noindex = false
 
 [menu]
   [[menu.main]]
-    indentifier = "about"
+    identifier = "about"
     name = "About"
     url = "/about/"
     weight = 1
