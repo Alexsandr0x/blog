@@ -26,12 +26,45 @@ icon = "fa-brands fa-github"
     languageName = 'Português'
     weight = 1
 
+    [[languages.pt-br.menu.main]]
+      identifier = "about"
+      name = "Sobre"
+      url = "/about/"
+      weight = 1
+
+    [[languages.pt-br.menu.main]]
+      identifier = "posts"
+      name = "Posts"
+      url = "/posts/"
+      weight = 2
+
+    [[languages.pt-br.menu.main]]
+      identifier = "lessons"
+      name = "Aulas e Apresentações"
+      url = "/lessons/"
+      weight = 3
+
   [languages.en]
     languageName = 'English'
     weight = 2
 
+    [[languages.en.menu.main]]
+      identifier = "about"
+      name = "About"
+      url = "/about/"
+      weight = 1
 
+    [[languages.en.menu.main]]
+      identifier = "posts"
+      name = "Posts"
+      url = "/posts/"
+      weight = 2
 
+    [[languages.en.menu.main]]
+      identifier = "lessons"
+      name = "Lectures & Talks"
+      url = "/lessons/"
+      weight = 3
 
 [markup]
   [markup.highlight]
@@ -39,21 +72,3 @@ icon = "fa-brands fa-github"
     lineNos = true
     noClasses = false
 
-[menu]
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 1
-
-  [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    url = "/posts/"
-    weight = 2
-
-  [[menu.main]]
-    identifier = "lessons"
-    name = "Lessons"
-    url = "/lessons/"
-    weight = 3

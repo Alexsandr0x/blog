@@ -1,4 +1,4 @@
 +++
-title = "Aulas e Apresentações"
+title = "Lectures & Talks"
 translationKey = "lessons"
 +++
