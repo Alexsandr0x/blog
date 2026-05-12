@@ -1,0 +1,46 @@
+{{ define "main" }}
+<header class="content__header">
+    <h1>{{ .Title | markdownify }}</h1>
+</header>
+
+<div class="content__body">
+    <dl class="lesson__meta">
+        {{ with .Params.tipo }}
+        <dt>Tipo</dt>
+        <dd>{{ . }}</dd>
+        {{ end }}
+
+        {{ with .Params.quando }}
+        <dt>Quando</dt>
+        <dd>{{ . }}</dd>
+        {{ end }}
+
+        {{ with .Params.onde }}
+        <dt>Onde</dt>
+        <dd>{{ . }}</dd>
+        {{ end }}
+    </dl>
+
+    {{ if or .Params.slides .Params.gravacao }}
+    <section class="lesson__materials">
+        <h2>Materiais</h2>
+        <ul>
+            {{ with .Params.slides }}
+            <li><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Slides</a></li>
+            {{ end }}
+            {{ with .Params.gravacao }}
+            <li><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Gravação</a></li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
+
+    {{ .Content }}
+</div>
+{{ end }}
+
+{{ define "aside" }}
+    {{ with .Params.tipo }}<p><strong>{{ . }}</strong></p>{{ end }}
+    {{ with .Params.quando }}<p>{{ . }}</p>{{ end }}
+    {{ with .Params.onde }}<p><em>{{ . }}</em></p>{{ end }}
+{{ end }}
