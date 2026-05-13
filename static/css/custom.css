@@ -1,0 +1,42 @@
+/* Increase page max-width so the body comfortably fits 80-char code lines.
+   Math: 80 chars × 9.6px (Fira Mono 16px) + 48px (pre padding) ≈ 51rem body
+         51rem body + 15rem aside + 2rem gap → 68rem page. Using 72rem for breathing room. */
+.page {
+    max-width: 72rem;
+}
+
+/* Prevent the highlight wrapper Hugo generates from overflowing the body div.
+   The theme already has overflow-x:auto on <pre>, but not on the .highlight <div>
+   that wraps it when syntax highlighting is active. Also reset overflow-wrap and
+   word-break so long identifiers don't break mid-word inside code blocks. */
+.highlight {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.highlight pre {
+    overflow-x: visible; /* scroll is handled by the .highlight wrapper */
+    margin-bottom: 0;
+}
+
+pre,
+code {
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: pre;
+}
+
+.gba-embed {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border-color, #444);
+    background: #0d1117;
+}
+
+.gba-embed iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}

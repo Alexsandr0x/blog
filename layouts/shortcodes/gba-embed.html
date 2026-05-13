@@ -1,0 +1,10 @@
+{{- $src := .Get "src" -}}
+{{- $title := .Get "title" | default "Game Boy Advance emulator" -}}
+<div class="gba-embed">
+  <iframe
+    src="{{ $src | relURL }}"
+    title="{{ $title }}"
+    loading="lazy"
+    allowfullscreen>
+  </iframe>
+</div>

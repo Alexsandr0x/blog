@@ -44,6 +44,12 @@ icon = "fa-brands fa-github"
       url = "/lessons/"
       weight = 3
 
+    [[languages.pt-br.menu.main]]
+      identifier = "projects"
+      name = "Projetos"
+      url = "/projects/"
+      weight = 4
+
   [languages.en]
     languageName = 'English'
     weight = 2
@@ -66,9 +72,14 @@ icon = "fa-brands fa-github"
       url = "/lessons/"
       weight = 3
 
+    [[languages.en.menu.main]]
+      identifier = "projects"
+      name = "Projects"
+      url = "/projects/"
+      weight = 4
+
 [markup]
   [markup.highlight]
     style = "monokai"
     lineNos = true
     noClasses = false
-
