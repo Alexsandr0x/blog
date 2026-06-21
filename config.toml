@@ -3,6 +3,7 @@ languageCode = 'en'
 defaultContentLanguage = 'pt-br'
 title = 'Alexsandro'
 theme = 'risotto'
+ignoreFiles = ['.*README\.md$', '.*\.gitkeep$']
 
 [params]
 noindex = false
@@ -90,7 +91,6 @@ icon = "fa-brands fa-github"
       url = "/hea/"
       weight = 5
 
-ignoreFiles = ['content/hea/README\\.md', 'content/hea/.*\\.gitkeep']
 
 [markup]
   [markup.highlight]
