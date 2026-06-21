@@ -3,7 +3,7 @@ title: "Basico de Concorrência e Paralelismo em Python"
 translationKey: "python-concurrent"
 date: 2022-12-28
 description: "Uma tentativa de explicar concorrência e paralelização com cachorros"
-_build:
+build:
   list: never
   render: always
 ---

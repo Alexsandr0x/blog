@@ -3,7 +3,7 @@ title: "Requests + BeautifulSoup para captura de dados web!"
 translationKey: "web-scrapping-letras"
 date: 2018-09-01
 description: "Um simples tutorial apresentando metodo de web-scrapping com BeautifulSoup"
-_build:
+build:
   list: never
   render: always
 ---

@@ -3,7 +3,7 @@ title: "Requests + BeautifulSoup for web data capture!"
 translationKey: "web-scrapping-letras"
 date: 2018-09-01
 description: "A simple tutorial introducing web scraping with BeautifulSoup"
-_build:
+build:
   list: never
   render: always
 ---

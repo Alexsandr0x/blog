@@ -3,7 +3,7 @@ title: "Basics of Concurrency and Parallelism in Python"
 translationKey: "python-concurrent"
 date: 2022-12-28
 description: "An attempt to explain concurrency and parallelism using dogs as an analogy"
-_build:
+build:
   list: never
   render: always
 ---
