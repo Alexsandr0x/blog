@@ -5,7 +5,7 @@ date: 2025-10-15
 tipo: "Palestra"
 quando: "15 de Outubro de 2025"
 onde: "Semana da Engenharia de Computação — USP São Carlos"
-slides: "https://docs.google.com/presentation/d/1kZk8kcGCj_hBC4nHxtfSMKbW8F_6sVpn/edit?usp=drive_link&ouid=101856942502351224429&rtpof=true&sd=true"
+slides: "https://drive.google.com/file/d/1T74sawuGlrqYX0R-EpmCiI7e07UPb5hD/view"
 ---
 
 Apresentação realizada em nome da [ImpulsoGov](https://www.impulsogov.org/) na Semana da Engenharia de Computação da USP São Carlos.
