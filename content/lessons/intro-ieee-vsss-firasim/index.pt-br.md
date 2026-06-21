@@ -77,7 +77,11 @@ Após o build, executar com:
 
 A interface possui três áreas principais:
 
+![Interface completa do FIRASim — painel de configuração à esquerda e visualização 3D do campo](/images/vsss-firasim/img-000.png)
+
 **1. View Gráfica** — Ambiente simulado com 3 robôs azuis contra 3 robôs amarelos. Use scroll para zoom, click esquerdo + movimento para ângulo da câmera e `C` para alternar câmeras pré-definidas.
+
+![View Gráfica — campo 3D com time azul e time amarelo](/images/vsss-firasim/img-001.png)
 
 **2. Variáveis de Configuração** — As configurações mais importantes:
 
@@ -88,7 +92,11 @@ A interface possui três áreas principais:
 | `Communication.Vision multicast Port` | Porta do UDP Multicast |
 | `Communication.Vision listen Port` | Porta onde o FIRASim escuta comandos (localhost em ambiente local) |
 
+![Painel de variáveis de configuração — seção Communication](/images/vsss-firasim/img-002.png)
+
 **3. Seleção de Robô Atual** — Permite selecionar o robô desejado, desligá-lo (turn-off) ou definir sua posição pelas coordenadas e ângulo diretamente.
+
+![Painel Current Robot — seleção de time e índice](/images/vsss-firasim/img-003.png)
 
 ---
 
@@ -112,6 +120,10 @@ Criamos uma conexão socket configurada para UDP Multicast. O resultado é um lo
 
 `código: p2_firasim_client.py`
 
+O resultado sem deserialização é ilegível — bytes Protobuf em formato bruto:
+
+![Terminal com saída bruta dos bytes Protobuf recebidos via UDP](/images/vsss-firasim/img-004.png)
+
 Os arquivos `.proto` do FIRASim estão em `FIRASim/msg`. As "compilações" para Python ficam na pasta `protocols` do projeto. Ao importar e deserializar, os dados ficam totalmente legíveis — posições de robôs, bola, dimensões do campo:
 
 ```python
@@ -124,7 +136,11 @@ Os arquivos `.proto` do FIRASim estão em `FIRASim/msg`. As "compilações" para
 }
 ```
 
+![Terminal com saída deserializada — dados legíveis de bola, robôs e campo](/images/vsss-firasim/img-005.png)
+
 A estrutura `.proto` do `common.proto` define os tipos `Ball`, `Robot`, `Field` e `Frame`. Note que quando os valores `x`, `y` ou `orientation` são zero, a chave não aparece na conversão para JSON — comportamento próprio do FIRASim.
+
+![Estrutura do common.proto — mensagens Ball, Robot, Field e Frame](/images/vsss-firasim/img-006.png)
 
 ### Movimentando os Robôs
 
