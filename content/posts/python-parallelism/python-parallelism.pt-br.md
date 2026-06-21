@@ -3,6 +3,9 @@ title: "Basico de Concorrência e Paralelismo em Python"
 translationKey: "python-concurrent"
 date: 2022-12-28
 description: "Uma tentativa de explicar concorrência e paralelização com cachorros"
+_build:
+  list: never
+  render: always
 ---
 
 Esse foi um conteúdo básico elaborado para a tribo de sistemas multi-robóticos da equipe de robótica [Project Neon]() em agosto de 2022. O conteúdo é aberto a membros mas eu preferi fazer uma síntese com algumas correções nesta publicação.

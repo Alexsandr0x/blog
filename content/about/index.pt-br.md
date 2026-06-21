@@ -7,22 +7,16 @@ tags = ["about", "pt-br"]
 
 ## Olá! Pode me chamar Alex :D
 
-Sou Alexsandro, mas eu prefiro Alex.
+Sou Alexsandro, mas prefiro Alex.
 
-Sou um cara de tecnologia interessando em um tanto de coisas, mas principalmente a area de dados. Atualmente sou um engenheiro de dados mid-senior e tentando evoluir em areas como arquitetura de software.
+Tech Lead e Coordenador de Dados na [ImpulsoGov](https://www.impulsogov.org/), onde cuido da arquitetura do nosso Data Warehouse, pipelines de dados e infraestrutura Cloud aplicados à saúde pública.
 
-Outros interesses tecnicos que tenho são robotica, impressão 3D, Python e *event driven systems*.
+Outros interesses técnicos: arquitetura de software, sistemas orientados a eventos, Rust, impressão 3D e hardware vintage (principalmente Game Boy Advance).
 
-## Robôs Boleiros ?!
+## Professor
 
-Se você é interessado em sistemas multi-robóticos pode aprender um pouco mais com meus projetos na [equipe de Robotica Neon](https://github.com/project-neon) da Universidade Federal do ABC!
+Ensinar é algo que me acompanha há anos — de programação básica a engenharia de dados. Se você tem um projeto de educação em tecnologia e quer uma mão, me chama.
 
-## Minhas aulas
+## Anoto o que aprendo
 
-Eu tambem sou professor no meu tempo restante, principalmente focado em apresentar programação e analise de dados para novatos nos assuntos.
-
-Minhas experiências mais recentes foram:
-
-* [Núcleo de Tecnologia do MTST](https://nucleodetecnologia.com.br/) ensinando HTML, CSS and Portugol de graça para a comunidade local.
-
-* [Sirius Education](https://www.sirius.education/) criando conteudo e mentorando estudantes em tópicos como Python, SQL e outras habilidades de um ciêntista de dados.
+Tenho um repositório chamado [HEA (Hoje Eu Aprendi)](https://github.com/Alexsandr0x/hea) onde registro pequenas descobertas do dia a dia — muito longe de posts polidos, mas talvez útil para alguém.

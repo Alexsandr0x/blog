@@ -1,0 +1,259 @@
+<!doctype html><html lang=en><head><title>Requests + BeautifulSoup for web data capture! &ndash; Alexsandro</title><meta name=description content="A simple tutorial introducing web scraping with BeautifulSoup"><meta name=viewport content="width=device-width,initial-scale=1"><meta charset=utf-8><meta property="og:site_name" content="Alexsandro"><meta property="og:title" content="Requests + BeautifulSoup for web data capture! – Alexsandro"><meta property="og:description" content="A simple tutorial introducing web scraping with BeautifulSoup"><meta property="og:url" content="https://alexsandro.dev/en/posts/web-scrapping-letras/web-scrapping-letras/"><meta property="og:type" content="article"><meta property="og:image" content="https://alexsandro.dev/images/web-scrapping-letras/letras_todas_as_musicas.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Requests + BeautifulSoup for web data capture! – Alexsandro"><meta name=twitter:description content="A simple tutorial introducing web scraping with BeautifulSoup"><meta name=twitter:image content="https://alexsandro.dev/images/web-scrapping-letras/letras_todas_as_musicas.png"><link rel=icon type=image/png href=https://alexsandro.dev/favicon.png><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin=anonymous><link rel=stylesheet href=https://alexsandro.dev/css/palettes/base16-dark.css><link rel=stylesheet href=https://alexsandro.dev/css/risotto.css><link rel=stylesheet href=https://alexsandro.dev/css/custom.css></head><body><div class=page><header class=page__header><h1 class=page__logo><a href=https://alexsandro.dev/ class=page__logo-inner>Alexsandro</a></h1><nav class="page__nav main-nav"><ul><li class=main-nav__item><a class=nav-main-item href=https://alexsandro.dev/en/about/ title>About</a></li><li class=main-nav__item><a class=nav-main-item href=https://alexsandro.dev/en/posts/ title>Posts</a></li><li class=main-nav__item><a class=nav-main-item href=https://alexsandro.dev/en/lessons/ title>Lectures & Talks</a></li><li class=main-nav__item><a class=nav-main-item href=https://alexsandro.dev/en/projects/ title>Projects</a></li></ul></nav></header><section class=page__body><p align=right><a href=https://alexsandro.dev/posts/web-scrapping-letras/web-scrapping-letras/>Português</a>
+<span class=active><b>English</b></span></p><header class=content__header><h1>Requests + BeautifulSoup for web data capture!</h1></header><div class=content__body><p>In the job market or in personal projects, it&rsquo;s common to need to build your own database on a given topic before performing some analysis. This can happen with any kind of website that doesn&rsquo;t provide an open API.</p><p>So we can learn simple data scraping concepts using Python by simulating one of these problems. Let&rsquo;s suppose the following scenario:</p><p>Suppose you want to understand characteristics of a certain singer or band — any information you could use to compare two different musicians. We can compare them by genre, Spotify plays, or YouTube views. But if we want to go deeper and understand the lyrics of these musicians — to analyze sentiment or word similarity between artists — we need to build a database with those lyrics. And that&rsquo;s exactly what we&rsquo;re going to do!</p><p><strong>At the end of this post we&rsquo;ll have a script that, given a musician, returns all of their song lyrics!</strong></p><p>OK! So we need a data source to capture these lyrics. For some international artists there are APIs that provide this data — which you can <strong><a href="https://www.programmableweb.com/category/lyrics/apis?category=20278">see here</a></strong> — but there&rsquo;s a lack of Brazilian musicians and, since we want to practice web scraping, we&rsquo;ll force ourselves to capture this data from a website in a more &ldquo;raw&rdquo; way. The chosen site is <strong><a href=https://www.letras.com>Letras.com</a></strong>.</p><p>To do this, let&rsquo;s try to understand our capture target. If we access, for example, the page of some artist and analyze the HTML, we&rsquo;ll be able to notice patterns that can be interesting to us.</p><p>Let&rsquo;s access the page of the musician <a href=https://www.letras.com/rincon-sapiencia/>Rincon Sapência</a> as an example. Right away we see the musician&rsquo;s name, most played songs, and <strong>all songs</strong> — a list on the page with, as the name says, all songs by that artist. Now we just need to analyze the HTML. Inspecting that section of the page:</p><figure><img src=/images/web-scrapping-letras/letras_todas_as_musicas.png></figure><p>We find a structure similar to this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;cnt-list--alp&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>	<span class=p>&lt;</span><span class=nt>ul</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;cnt-list&#34;</span><span class=p>&gt;</span> 
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;A&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;/rincon-sapiencia/a-coisa-ta-preta/&#34;</span><span class=p>&gt;</span>A Coisa Tá Preta<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;/rincon-sapiencia/a-noite-e-nossa/&#34;</span><span class=p>&gt;</span>A Noite é Nossa<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;/rincon-sapiencia/a-volta-pra-casa/&#34;</span><span class=p>&gt;</span>A Volta pra Casa<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;/rincon-sapiencia/afro-rep/&#34;</span><span class=p>&gt;</span>Afro Rep<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;/rincon-sapiencia/amores-as-escuras/&#34;</span><span class=p>&gt;</span>Amores às Escuras<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;/rincon-sapiencia/andar-com-fe/&#34;</span><span class=p>&gt;</span>Andar Com Fé<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;/rincon-sapiencia/rea-de-conforto/&#34;</span><span class=p>&gt;</span>Área de Conforto<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>	<span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><p>From this HTML block we already understand that, once on the musician&rsquo;s page, we can get the <strong>song name</strong> and a <strong>link</strong> for each song. That will be our first task.</p><p>Now let&rsquo;s do in Python exactly what we did here: access a musician&rsquo;s page and list their songs.</p><p>Since the first thing we&rsquo;ll do is <strong>access a page</strong>, we need to use Python&rsquo;s <strong>requests</strong> library — a GET request with the URL we want should be enough:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>requests</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_all_musics</span><span class=p>(</span><span class=n>musician</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>	<span class=n>all_musics</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>	
+</span></span><span class=line><span class=cl>	<span class=c1># URL we&#39;ll scrape — in this case, the base Letras URL + the musician name</span>
+</span></span><span class=line><span class=cl>	<span class=n>url</span> <span class=o>=</span> <span class=s2>&#34;https://www.letras.com/</span><span class=si>{}</span><span class=s2>&#34;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=n>musician</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	
+</span></span><span class=line><span class=cl>	<span class=c1># Web request to our built URL — returns an HTTP result</span>
+</span></span><span class=line><span class=cl>	<span class=n>response</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>url</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=c1># From that result, we can get its content — a list of bytes representing our HTML</span>
+</span></span><span class=line><span class=cl>	<span class=n>html</span> <span class=o>=</span> <span class=n>response</span><span class=o>.</span><span class=n>content</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=n>all_musics</span>
+</span></span></code></pre></td></tr></table></div></div><p>As things stand, the code still returns only an empty list. We still need to populate <code>all_musics</code> with the content of the HTML elements we observed.</p><p>Since we already have the HTML, we just need to work with it. We&rsquo;ll use the <strong><a href=https://www.crummy.com/software/BeautifulSoup/bs4/doc/>BeautifulSoup</a></strong> library. It will make it easy to filter elements by id and class without needing to learn CSS selectors or XPath (I&rsquo;ll reserve a post just for that).</p><p>To install it, use pip:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pip install beautifulsoup4
+</span></span></code></pre></td></tr></table></div></div><p>Now let&rsquo;s transform our request content into an object that can be filtered to find the song URL and name.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>requests</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>bs4</span> <span class=kn>import</span> <span class=n>BeautifulSoup</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_all_musics</span><span class=p>(</span><span class=n>musician</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>	<span class=n>all_musics</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>	
+</span></span><span class=line><span class=cl>	<span class=c1># URL we&#39;ll scrape</span>
+</span></span><span class=line><span class=cl>	<span class=n>url</span> <span class=o>=</span> <span class=s2>&#34;https://www.letras.com/</span><span class=si>{}</span><span class=s2>&#34;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=n>musician</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	
+</span></span><span class=line><span class=cl>	<span class=c1># Web request to our built URL</span>
+</span></span><span class=line><span class=cl>	<span class=n>response</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>url</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=c1># Get the raw HTML content</span>
+</span></span><span class=line><span class=cl>	<span class=n>html</span> <span class=o>=</span> <span class=n>response</span><span class=o>.</span><span class=n>content</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=c1># Parse into an object we can work with</span>
+</span></span><span class=line><span class=cl>	<span class=n>soup</span> <span class=o>=</span> <span class=n>BeautifulSoup</span><span class=p>(</span><span class=n>html</span><span class=p>,</span> <span class=s1>&#39;html.parser&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=c1># Capture the div element with class &#39;cnt-list--alp&#39;</span>
+</span></span><span class=line><span class=cl>	<span class=n>all_songs</span> <span class=o>=</span> <span class=n>soup</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;div&#39;</span><span class=p>,</span> <span class=p>{</span><span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;cnt-list--alp&#39;</span><span class=p>})</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=c1># From the element stored in all_songs, search its children for &#39;li&#39; tags</span>
+</span></span><span class=line><span class=cl>	<span class=n>song_list</span> <span class=o>=</span> <span class=n>all_songs</span><span class=o>.</span><span class=n>find_all</span><span class=p>(</span><span class=s1>&#39;li&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=n>all_musics</span>
+</span></span></code></pre></td></tr></table></div></div><p>We&rsquo;re still not returning anything, but if we return <code>song_list</code> we&rsquo;ll get something like this:</p><pre tabindex=0><code>[
+	&lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/a-coisa-ta-preta/&#34; id=&#34;A&#34;&gt;A Coisa Tá Preta&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/a-noite-e-nossa/&#34;&gt;A Noite é Nossa&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/a-volta-pra-casa/&#34;&gt;A Volta pra Casa&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/afro-rep/&#34;&gt;Afro Rep&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/amores-as-escuras/&#34;&gt;Amores às Escuras&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/andar-com-fe/&#34;&gt;Andar Com Fé&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/rea-de-conforto/&#34;&gt;Área de Conforto&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/autentico-x-excentrico-x-incomparavel/&#34;&gt;Autêntico X Excêntrico X Incomparável&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/batidao/&#34; id=&#34;B&#34;&gt;Batidão&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/bencao/&#34;&gt;Benção (part. William Magalhães)&lt;/a&gt;&lt;/li&gt;,
+	 &lt;li&gt;&lt;a href=&#34;/rincon-sapiencia/coisas-de-brasil/&#34; id=&#34;C&#34;&gt;Coisas de Brasil&lt;/a&gt;&lt;/li&gt;,
+	 [...]
+</code></pre><p>This is a list with all the songs on that page. Now we just need to extract the URL and song name. We&rsquo;ll continue using BeautifulSoup and add the following lines to the previous code:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>	<span class=k>for</span> <span class=n>song_elem</span> <span class=ow>in</span> <span class=n>song_list</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>		<span class=c1># Note that href is inside the &#39;a&#39; tag, inside our captured &#39;li&#39;</span>
+</span></span><span class=line><span class=cl>		<span class=n>link</span> <span class=o>=</span> <span class=n>song_elem</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>)[</span><span class=s1>&#39;href&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>		<span class=n>name</span> <span class=o>=</span> <span class=n>song_elem</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>text</span>
+</span></span><span class=line><span class=cl>		<span class=c1># Concatenate with the base URL</span>
+</span></span><span class=line><span class=cl>		<span class=n>link</span> <span class=o>=</span> <span class=s1>&#39;https://www.letras.com&#39;</span> <span class=o>+</span> <span class=n>link</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>		<span class=n>song</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=s2>&#34;url&#34;</span><span class=p>:</span> <span class=n>link</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>			<span class=s2>&#34;name&#34;</span><span class=p>:</span> <span class=n>name</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>		<span class=n>all_musics</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>song</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>Now <code>all_musics</code> contains a dictionary with the name and link of each song! With just a few lines of code we&rsquo;ve already done something interesting, but that&rsquo;s not our final goal yet. Our next step is to take this list and, for each song, capture the lyrics by accessing the URL.</p><figure><img src=/images/web-scrapping-letras/letras_letra_da_musica.png></figure><p>Inspecting the element that holds the lyrics, we get this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;cnt-letra p402_premium&#34;</span> <span class=na>style</span><span class=o>=</span><span class=s>&#34;font-size: 19px;&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>	<span class=p>&lt;</span><span class=nt>article</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>Salve!
+</span></span><span class=line><span class=cl>		<span class=p>&lt;</span><span class=nt>br</span><span class=p>&gt;</span>OK!<span class=p>&lt;</span><span class=nt>br</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>		Rincon Sapiência, também conhecido como Manicongo, certo?
+</span></span><span class=line><span class=cl>		...
+</span></span></code></pre></td></tr></table></div></div><p>So we can write a script similar to the previous one, but now filtering by the class <code>cnt-letra</code> and getting all the text content within it:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_lyric_from_url</span><span class=p>(</span><span class=n>url</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>	<span class=n>response</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>url</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>soup</span> <span class=o>=</span> <span class=n>BeautifulSoup</span><span class=p>(</span><span class=n>response</span><span class=o>.</span><span class=n>content</span><span class=p>,</span> <span class=s1>&#39;lxml&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>lyric</span> <span class=o>=</span> <span class=n>soup</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;div&#39;</span><span class=p>,</span> <span class=s1>&#39;cnt-letra&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>getText</span><span class=p>(</span><span class=n>separator</span><span class=o>=</span><span class=s1>&#39; &#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=n>lyric</span>
+</span></span></code></pre></td></tr></table></div></div><p>If we run <code>get_lyric_from_url</code> for any Letras.com song URL, we&rsquo;ll already have the lyrics as a string.</p><p>Now we have a method that captures all songs by a given musician and another that captures the lyrics for a given URL. To keep this post from getting too long, I&rsquo;ll stop here. I still plan to use this code for a post on natural language processing and data visualization — but that&rsquo;s for the future.</p><p>Here&rsquo;s the final code for all of our work, with the bonus of generating a JSON file storing everything that was captured!</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>json</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>requests</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>bs4</span> <span class=kn>import</span> <span class=n>BeautifulSoup</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_all_musics</span><span class=p>(</span><span class=n>musician</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>	<span class=n>all_musics</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>	
+</span></span><span class=line><span class=cl>	<span class=n>url</span> <span class=o>=</span> <span class=s2>&#34;https://www.letras.com/</span><span class=si>{}</span><span class=s2>&#34;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=n>musician</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>response</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>url</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>html</span> <span class=o>=</span> <span class=n>response</span><span class=o>.</span><span class=n>content</span>
+</span></span><span class=line><span class=cl>	<span class=n>soup</span> <span class=o>=</span> <span class=n>BeautifulSoup</span><span class=p>(</span><span class=n>html</span><span class=p>,</span> <span class=s1>&#39;html.parser&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>all_songs</span> <span class=o>=</span> <span class=n>soup</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;div&#39;</span><span class=p>,</span> <span class=p>{</span><span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;cnt-list--alp&#39;</span><span class=p>})</span>
+</span></span><span class=line><span class=cl>	<span class=n>song_list</span> <span class=o>=</span> <span class=n>all_songs</span><span class=o>.</span><span class=n>find_all</span><span class=p>(</span><span class=s1>&#39;li&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>for</span> <span class=n>song_elem</span> <span class=ow>in</span> <span class=n>song_list</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>		<span class=n>link</span> <span class=o>=</span> <span class=n>song_elem</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>)[</span><span class=s1>&#39;href&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>		<span class=n>name</span> <span class=o>=</span> <span class=n>song_elem</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>text</span>
+</span></span><span class=line><span class=cl>		<span class=n>link</span> <span class=o>=</span> <span class=s1>&#39;https://www.letras.com&#39;</span> <span class=o>+</span> <span class=n>link</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>		<span class=n>song</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=s2>&#34;url&#34;</span><span class=p>:</span> <span class=n>link</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>			<span class=s2>&#34;name&#34;</span><span class=p>:</span> <span class=n>name</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>		<span class=n>all_musics</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>song</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=n>all_musics</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_lyric_from_url</span><span class=p>(</span><span class=n>url</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>	<span class=n>response</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>url</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>soup</span> <span class=o>=</span> <span class=n>BeautifulSoup</span><span class=p>(</span><span class=n>response</span><span class=o>.</span><span class=n>content</span><span class=p>,</span> <span class=s1>&#39;lxml&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>lyric</span> <span class=o>=</span> <span class=n>soup</span><span class=o>.</span><span class=n>find</span><span class=p>(</span><span class=s1>&#39;div&#39;</span><span class=p>,</span> <span class=s1>&#39;cnt-letra&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>getText</span><span class=p>(</span><span class=n>separator</span><span class=o>=</span><span class=s1>&#39; &#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=n>lyric</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>musician_code</span> <span class=o>=</span> <span class=s1>&#39;rincon-sapiencia&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>songs</span> <span class=o>=</span> <span class=n>get_all_musics</span><span class=p>(</span><span class=n>musician_code</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>song</span> <span class=ow>in</span> <span class=n>songs</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	<span class=n>lyric</span> <span class=o>=</span> <span class=n>get_lyric_from_url</span><span class=p>(</span><span class=n>song</span><span class=p>[</span><span class=s1>&#39;url&#39;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>	<span class=n>song</span><span class=p>[</span><span class=s1>&#39;lyric&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=n>lyric</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=s1>&#39;songs_</span><span class=si>{}</span><span class=s1>.json&#39;</span><span class=o>.</span><span class=n>format</span><span class=p>(</span><span class=n>musician_code</span><span class=p>),</span> <span class=s1>&#39;w&#39;</span><span class=p>)</span> <span class=k>as</span> <span class=n>file_o</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	<span class=n>file_o</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=n>json</span><span class=o>.</span><span class=n>dumps</span><span class=p>(</span><span class=n>songs</span><span class=p>))</span>
+</span></span></code></pre></td></tr></table></div></div></div><footer class=content__footer></footer></section><section class=page__aside><div class=aside__about><div class=aside__about><h1 class=about__title>Alex</h1><p class=about__description>Engenheiro de dados, professor e entusiasta de Python.</p></div><ul class=aside__social-links><li><a href=https://linkedin.com/in/Alexsandr0x rel=me aria-label=LinkedIn title=LinkedIn><i class="fa-brands fa-linkedin" aria-hidden=true></i></a>&nbsp;</li><li><a href=https://github.com/Alexsandr0x rel=me aria-label=GitHub title=GitHub><i class="fa-brands fa-github" aria-hidden=true></i></a>&nbsp;</li></ul></div><hr><div class=aside__content><p>A simple tutorial introducing web scraping with BeautifulSoup</p><p>2018-09-01</p></div></section><footer class=page__footer><p class=copyright></p><p class=advertisement>Powered by <a href=https://gohugo.io/>hugo</a> and <a href=https://github.com/joeroe/risotto>risotto</a>.</p></footer></div></body></html>

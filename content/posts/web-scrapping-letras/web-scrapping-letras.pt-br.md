@@ -3,6 +3,9 @@ title: "Requests + BeautifulSoup para captura de dados web!"
 translationKey: "web-scrapping-letras"
 date: 2018-09-01
 description: "Um simples tutorial apresentando metodo de web-scrapping com BeautifulSoup"
+_build:
+  list: never
+  render: always
 ---
 
 Dentro do mercado de trabalho ou em projetos é comum a necessidade de criarmos nossa própria base de dados de algum assunto para depois fazermos alguma análise. Isso pode acontecer com qualquer tipo de site que não nos proporcione uma API aberta.

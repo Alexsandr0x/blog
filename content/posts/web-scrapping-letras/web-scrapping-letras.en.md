@@ -3,6 +3,9 @@ title: "Requests + BeautifulSoup for web data capture!"
 translationKey: "web-scrapping-letras"
 date: 2018-09-01
 description: "A simple tutorial introducing web scraping with BeautifulSoup"
+_build:
+  list: never
+  render: always
 ---
 
 In the job market or in personal projects, it's common to need to build your own database on a given topic before performing some analysis. This can happen with any kind of website that doesn't provide an open API.

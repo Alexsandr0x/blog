@@ -3,6 +3,9 @@ title: "Basics of Concurrency and Parallelism in Python"
 translationKey: "python-concurrent"
 date: 2022-12-28
 description: "An attempt to explain concurrency and parallelism using dogs as an analogy"
+_build:
+  list: never
+  render: always
 ---
 
 This content was originally prepared for the multi-robot systems tribe of the robotics team [Project Neon]() in August 2022. The content is open to members, but I preferred to write a revised summary in this post.
