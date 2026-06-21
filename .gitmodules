@@ -1,0 +1,3 @@
+[submodule "content/hea"]
+	path = content/hea
+	url = https://github.com/Alexsandr0x/hea.git

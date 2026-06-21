@@ -50,6 +50,12 @@ icon = "fa-brands fa-github"
       url = "/projects/"
       weight = 4
 
+    [[languages.pt-br.menu.main]]
+      identifier = "hea"
+      name = "HEA"
+      url = "/hea/"
+      weight = 5
+
   [languages.en]
     languageName = 'English'
     weight = 2
@@ -77,6 +83,14 @@ icon = "fa-brands fa-github"
       name = "Projects"
       url = "/projects/"
       weight = 4
+
+    [[languages.en.menu.main]]
+      identifier = "hea"
+      name = "HEA"
+      url = "/hea/"
+      weight = 5
+
+ignoreFiles = ['content/hea/README\\.md', 'content/hea/.*\\.gitkeep']
 
 [markup]
   [markup.highlight]
