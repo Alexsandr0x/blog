@@ -14,4 +14,9 @@ Um relato honesto dos erros cometidos ao colocar o Apache Airflow em produção 
 
 [Acessar slides](https://docs.google.com/presentation/d/18PwTbgLbzz8U2mHgYJiO06Yi_GxXzdzsbqXnJ1PTMP0/edit?usp=drive_link)
 
-**Fontes & leitura extra:** em breve
+## Fontes & leitura extra
+
+- [Documentação do Apache Airflow](https://airflow.apache.org/docs/)
+- [Documentação da Astronomer](https://www.astronomer.io/docs/)
+- [Debunking myths about Airflow's use cases](https://www.astronomer.io/blog/debunking-myths-about-airflows-use-cases/) — blog da Astronomer
+- [Airflow 101](https://academy.astronomer.io/path/airflow-101) — curso gratuito no Astronomer Academy
