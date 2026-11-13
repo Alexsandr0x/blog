@@ -1,0 +1,87 @@
+{{ define "main" }}
+<header class="page-head">
+  <h1 class="glitch" data-text="{{ .Title }}">{{ .Title }}</h1>
+  {{ with .Params.resumo }}<p class="lead">{{ . }}</p>{{ end }}
+  {{ with .Params.cv_url }}<p class="btns" style="margin-top:1.25rem"><a class="btn" href="{{ . }}" data-goatcounter-click="curriculo">{{ i18n "cv_download" }}</a></p>{{ end }}
+</header>
+
+{{ with .Params.destaques }}
+<ul class="cv-highlights">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+{{ end }}
+
+<div class="cv-layout">
+<div class="cv">
+  {{ with .Params.atuacao }}
+  <section class="cv__section" aria-labelledby="cv-work">
+    <h2 id="cv-work">{{ i18n "cv_work" }}</h2>
+    {{ range . }}
+    <article class="cv__entry">
+      <p class="cv__period">{{ .periodo }}</p>
+      <div>
+        <h3>{{ .cargo }}{{ with .org }} <span class="cv__org">· {{ . }}</span>{{ end }}</h3>
+        {{ with .itens }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{ with .Params.docencia }}
+  <section class="cv__section" aria-labelledby="cv-teach">
+    <h2 id="cv-teach">{{ i18n "cv_teaching" }}</h2>
+    {{ range . }}
+    <article class="cv__entry">
+      <p class="cv__period">{{ .periodo }}</p>
+      <div>
+        <h3>{{ if .url }}{{ $local := site.GetPage .url }}<a href="{{ if $local }}{{ .url | relLangURL }}{{ else }}{{ .url | relURL }}{{ end }}"{{ if not $local }} hreflang="pt-br"{{ end }} style="text-decoration:none">{{ .titulo }}</a>{{ if not $local }} <span class="cv__org">(pt)</span>{{ end }}{{ else }}{{ .titulo }}{{ end }}{{ with .org }} <span class="cv__org">· {{ . }}</span>{{ end }}</h3>
+        {{ with .texto }}<p>{{ . }}</p>{{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{ with .Params.formacao }}
+  <section class="cv__section" aria-labelledby="cv-edu">
+    <h2 id="cv-edu">{{ i18n "cv_education" }}</h2>
+    {{ range . }}
+    <article class="cv__entry">
+      <p class="cv__period">{{ .periodo }}</p>
+      <div>
+        <h3>{{ .titulo }}{{ with .org }} <span class="cv__org">· {{ . }}</span>{{ end }}</h3>
+        {{ with .texto }}<p>{{ . }}</p>{{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  <div class="prose">{{ .Content }}</div>
+  {{ if .Params.rascunho }}<p class="note" role="note"><strong>{{ i18n "draft_title" }}.</strong> {{ i18n "draft_text" }}</p>{{ end }}
+</div>
+
+<aside class="cv-aside">
+  <nav class="panel" aria-labelledby="cv-toc">
+    <p class="panel__title" id="cv-toc">{{ i18n "on_page" }}</p>
+    <ul class="mini">
+      {{ if .Params.atuacao }}<li><a href="#cv-work">{{ i18n "cv_work" }}</a></li>{{ end }}
+      {{ if .Params.docencia }}<li><a href="#cv-teach">{{ i18n "cv_teaching" }}</a></li>{{ end }}
+      {{ if .Params.formacao }}<li><a href="#cv-edu">{{ i18n "cv_education" }}</a></li>{{ end }}
+    </ul>
+  </nav>
+  {{ with .Params.skills }}
+  <section class="panel" aria-labelledby="cv-skills">
+    <h2 class="panel__title" id="cv-skills">{{ i18n "cv_skills" }}</h2>
+    <ul class="tags">{{ range . }}<li style="color:var(--text)">{{ . }}</li>{{ end }}</ul>
+  </section>
+  {{ end }}
+  <section class="panel" aria-labelledby="cv-links">
+    <h2 class="panel__title" id="cv-links">{{ i18n "find_me" }}</h2>
+    <ul class="mini">
+      {{ with site.GetPage "/contact" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+      {{ range site.Params.socialLinks }}<li><a href="{{ .url }}" rel="me" data-goatcounter-click="social/{{ .title | lower }}">{{ .title }}</a></li>{{ end }}
+    </ul>
+  </section>
+</aside>
+</div>
+{{ end }}

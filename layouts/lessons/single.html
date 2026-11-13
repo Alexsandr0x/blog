@@ -1,46 +1,22 @@
 {{ define "main" }}
-<header class="content__header">
-    <h1>{{ .Title | markdownify }}</h1>
-</header>
-
-<div class="content__body">
-    <dl class="lesson__meta">
-        {{ with .Params.tipo }}
-        <dt>Tipo</dt>
-        <dd>{{ . }}</dd>
-        {{ end }}
-
-        {{ with .Params.quando }}
-        <dt>Quando</dt>
-        <dd>{{ . }}</dd>
-        {{ end }}
-
-        {{ with .Params.onde }}
-        <dt>Onde</dt>
-        <dd>{{ . }}</dd>
-        {{ end }}
+<article class="read">
+  <header class="read__head">
+    <h1 class="glitch" data-text="{{ .Title | plainify }}">{{ .Title | markdownify }}</h1>
+  </header>
+  <section class="panel facts" aria-label="{{ i18n "details" }}">
+    <dl>
+      {{ with .Params.tipo }}<dt>{{ i18n "type" }}</dt><dd>{{ . }}</dd>{{ end }}
+      {{ with .Params.quando }}<dt>{{ i18n "when" }}</dt><dd>{{ . }}</dd>{{ end }}
+      {{ with .Params.onde }}<dt>{{ i18n "where" }}</dt><dd>{{ . }}</dd>{{ end }}
     </dl>
-
     {{ if or .Params.slides .Params.gravacao }}
-    <section class="lesson__materials">
-        <h2>Materiais</h2>
-        <ul>
-            {{ with .Params.slides }}
-            <li><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Slides</a></li>
-            {{ end }}
-            {{ with .Params.gravacao }}
-            <li><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Gravação</a></li>
-            {{ end }}
-        </ul>
-    </section>
+    <div class="btns">
+      {{ with .Params.slides }}<a class="btn" href="{{ . }}" target="_blank" rel="noopener noreferrer" data-goatcounter-click="slides/{{ $.File.ContentBaseName }}" data-goatcounter-title="Slides: {{ $.Title | plainify }}">{{ i18n "slides" }}</a>{{ end }}
+      {{ with .Params.gravacao }}<a class="btn btn--ghost" href="{{ . }}" target="_blank" rel="noopener noreferrer" data-goatcounter-click="gravacao/{{ $.File.ContentBaseName }}" data-goatcounter-title="Gravação: {{ $.Title | plainify }}">{{ i18n "recording" }}</a>{{ end }}
+    </div>
     {{ end }}
-
-    {{ .Content }}
-</div>
-{{ end }}
-
-{{ define "aside" }}
-    {{ with .Params.tipo }}<p><strong>{{ . }}</strong></p>{{ end }}
-    {{ with .Params.quando }}<p>{{ . }}</p>{{ end }}
-    {{ with .Params.onde }}<p><em>{{ . }}</em></p>{{ end }}
+  </section>
+  <div class="prose">{{ .Content }}</div>
+  <footer class="read__foot"><a class="back" href="{{ (site.GetPage "lessons").RelPermalink }}">{{ i18n "back" }}</a></footer>
+</article>
 {{ end }}

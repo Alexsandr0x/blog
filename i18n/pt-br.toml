@@ -1,0 +1,85 @@
+[skip]
+other = "Ir para o conteúdo"
+[hero_lead]
+other = "Tech Lead de Dados. Professor por vocação."
+[see_portfolio]
+other = "Ver portfólio"
+[see_talks]
+other = "Ver palestras"
+[find_me]
+other = "Onde me achar"
+[recent_talks]
+other = "Palestras recentes"
+[recent_posts]
+other = "Posts"
+[recent_hea]
+other = "Últimos HEA"
+[featured_project]
+other = "Projetos"
+[see_all]
+other = "ver todos"
+[no_posts]
+other = "Nenhum post publicado por enquanto."
+[no_posts_more]
+other = "Os textos longos entram aqui quando ficarem prontos. Enquanto isso, o que há de mais novo está nas palestras e nos HEA."
+[no_hea]
+other = "Nenhum HEA por enquanto."
+[no_items]
+other = "Nada por aqui ainda."
+[back]
+other = "Voltar"
+[type]
+other = "Tipo"
+[when]
+other = "Quando"
+[where]
+other = "Onde"
+[slides]
+other = "Slides"
+[recording]
+other = "Gravação"
+[repo]
+other = "Repositório"
+[rom]
+other = "Baixar ROM"
+[talks_cmd]
+other = "ls palestras/"
+[hea_cmd]
+other = "ls hea/"
+[built_with]
+other = "Feito com Hugo"
+[source]
+other = "código-fonte"
+[draft_title]
+other = "Rascunho"
+[draft_text]
+other = "Esta página está em construção e os dados serão revisados antes da versão final."
+[cv_work]
+other = "Atuação"
+[cv_education]
+other = "Formação"
+[cv_teaching]
+other = "Docência"
+[cv_skills]
+other = "Tecnologias"
+[lost_title]
+other = "Página não encontrada"
+[lost_text]
+other = "O endereço não existe ou mudou de lugar. Comece pela página inicial."
+[go_home]
+other = "Ir para a página inicial"
+
+[on_page]
+other = "Nesta página"
+[cv_download]
+other = "Baixar currículo (PDF)"
+[channels]
+other = "Canais de contato"
+[nav_main]
+other = "Principal"
+[details]
+other = "Detalhes"
+[links]
+other = "Links"
+[lang_switch]
+other = "Idioma / Language"

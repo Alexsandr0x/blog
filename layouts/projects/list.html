@@ -1,18 +1,14 @@
 {{ define "main" }}
-<header class="content__header">
-    <h1>{{ .Title | markdownify }}</h1>
-    {{ .Content }}
+<header class="page-head">
+  <h1 class="glitch" data-text="{{ .Title | plainify }}">{{ .Title | markdownify }}</h1>
+  {{ with .Content }}<div class="prose" style="margin-top:1rem;color:var(--muted)">{{ . }}</div>{{ end }}
 </header>
-
-{{ range .Pages.ByDate.Reverse }}
-<article class="post">
-    <header class="post__header">
-        <h1><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
-    </header>
-    <section class="post__summary">
-        {{ .Description }}
-    </section>
-    </br>
-</article>
+{{ $pages := .Pages.ByDate.Reverse }}
+{{ if $pages }}
+<ol class="rows">
+  {{ range $pages }}{{ partial "row.html" (dict "p" .) }}{{ end }}
+</ol>
+{{ else }}
+<div class="empty"><p><strong>{{ i18n "no_items" }}</strong></p></div>
 {{ end }}
 {{ end }}

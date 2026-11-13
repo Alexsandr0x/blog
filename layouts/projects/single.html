@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article class="read" style="max-width:none">
+  <header class="read__head" style="max-width:var(--measure)">
+    <h1 class="glitch" data-text="{{ .Title | plainify }}">{{ .Title | markdownify }}</h1>
+    {{ with .Description }}<p style="margin:1rem 0 0;color:var(--muted)">{{ . }}</p>{{ end }}
+  </header>
+  {{ if or .Params.repo .Params.rom }}
+  <section class="panel facts" aria-label="{{ i18n "links" }}">
+    <div class="btns" style="margin-top:0">
+      {{ with .Params.repo }}<a class="btn" href="{{ . }}" target="_blank" rel="noopener noreferrer" data-goatcounter-click="repo/{{ $.File.ContentBaseName }}">{{ i18n "repo" }}</a>{{ end }}
+      {{ with .Params.rom }}<a class="btn btn--ghost" href="{{ . | relURL }}" data-goatcounter-click="rom/{{ $.File.ContentBaseName }}">{{ i18n "rom" }}</a>{{ end }}
+    </div>
+  </section>
+  {{ end }}
+  <div class="prose">{{ .Content }}</div>
+  <footer class="read__foot"><a class="back" href="{{ (site.GetPage "projects").RelPermalink }}">{{ i18n "back" }}</a></footer>
+</article>
+{{ end }}

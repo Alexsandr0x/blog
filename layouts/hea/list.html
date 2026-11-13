@@ -1,0 +1,14 @@
+{{ define "main" }}
+<header class="page-head">
+  <h1 class="glitch" data-text="{{ .Title | plainify }}">{{ .Title | markdownify }}</h1>
+  {{ with .Content }}<div class="prose" style="margin-top:1rem;color:var(--muted)">{{ . }}</div>{{ end }}
+</header>
+{{ $pages := .RegularPagesRecursive.ByDate.Reverse }}
+{{ if $pages }}
+<ol class="rows">
+  {{ range $pages }}{{ partial "row.html" (dict "p" . "tags" true "compact" true) }}{{ end }}
+</ol>
+{{ else }}
+<div class="empty"><p><strong>{{ i18n "no_hea" }}</strong></p></div>
+{{ end }}
+{{ end }}

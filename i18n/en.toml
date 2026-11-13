@@ -1,0 +1,85 @@
+[skip]
+other = "Skip to content"
+[hero_lead]
+other = "Data Tech Lead. Teacher by vocation."
+[see_portfolio]
+other = "See portfolio"
+[see_talks]
+other = "See talks"
+[find_me]
+other = "Find me"
+[recent_talks]
+other = "Recent talks"
+[recent_posts]
+other = "Posts"
+[recent_hea]
+other = "Latest HEA"
+[featured_project]
+other = "Projects"
+[see_all]
+other = "see all"
+[no_posts]
+other = "No posts published yet."
+[no_posts_more]
+other = "Long reads will land here when they are ready. Meanwhile, the newest material is in the talks and the HEA notes."
+[no_hea]
+other = "No HEA yet."
+[no_items]
+other = "Nothing here yet."
+[back]
+other = "Back"
+[type]
+other = "Type"
+[when]
+other = "When"
+[where]
+other = "Where"
+[slides]
+other = "Slides"
+[recording]
+other = "Recording"
+[repo]
+other = "Repository"
+[rom]
+other = "Download ROM"
+[talks_cmd]
+other = "ls talks/"
+[hea_cmd]
+other = "ls hea/"
+[built_with]
+other = "Built with Hugo"
+[source]
+other = "source code"
+[draft_title]
+other = "Draft"
+[draft_text]
+other = "This page is under construction and the details will be reviewed before the final version."
+[cv_work]
+other = "Work"
+[cv_education]
+other = "Education"
+[cv_teaching]
+other = "Teaching"
+[cv_skills]
+other = "Technologies"
+[lost_title]
+other = "Page not found"
+[lost_text]
+other = "The address does not exist or has moved. Start from the home page."
+[go_home]
+other = "Go to the home page"
+
+[on_page]
+other = "On this page"
+[cv_download]
+other = "Download CV (PDF)"
+[channels]
+other = "Contact channels"
+[nav_main]
+other = "Main"
+[details]
+other = "Details"
+[links]
+other = "Links"
+[lang_switch]
+other = "Idioma / Language"

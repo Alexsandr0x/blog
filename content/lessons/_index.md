@@ -1,8 +1,9 @@
 +++
-title = "Talks"
+title = "Palestras"
 translationKey = "lessons"
+description = "Palestras e aulas do Alexsandro sobre engenharia de dados, arquitetura e Airflow, com slides."
 +++
 
-Palestras e apresentações sobre engenharia de dados, arquitetura e tudo mais que achei interessante o suficiente para compartilhar em público.
+Palestras e apresentações sobre engenharia de dados, arquitetura e o que mais me pareceu bom de dividir em público.
 
-Mais por vir em 2026.
+Novas palestras entram aqui conforme acontecem.

@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{ $about := eq .File.Dir "about/" }}
+<article class="read{{ if $about }} read--about{{ end }}">
+  <header class="read__head">
+    <h1 class="glitch" data-text="{{ .Title | plainify }}">{{ .Title | markdownify }}</h1>
+    {{ with .Description }}<p class="lead" style="margin:1rem 0 0;color:var(--muted)">{{ . }}</p>{{ end }}
+    {{ $showTags := and .Params.tags (ne .File.Dir "about/") }}
+    {{ if or (not .Date.IsZero) $showTags }}
+    <div class="meta">
+      {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>{{ end }}
+      {{ if $showTags }}<ul class="tags">{{ range .Params.tags }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+    </div>
+    {{ end }}
+  </header>
+  <div class="prose{{ if $about }} prose--about{{ end }}">{{ .Content }}</div>
+  {{ with site.GetPage .Section }}{{ if eq .Kind "section" }}
+  <footer class="read__foot"><a class="back" href="{{ .RelPermalink }}">{{ i18n "back" }}</a></footer>
+  {{ end }}{{ end }}
+</article>
+{{ end }}

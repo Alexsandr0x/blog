@@ -1,0 +1,23 @@
+{{ define "main" }}
+<header class="page-head">
+  <h1 class="glitch" data-text="{{ .Title | plainify }}">{{ .Title | markdownify }}</h1>
+  {{ with .Content }}<div class="prose" style="margin-top:1rem;color:var(--muted)">{{ . }}</div>{{ end }}
+</header>
+{{ $pages := .Pages.ByDate.Reverse }}
+{{ if $pages }}
+<ol class="rows">
+  {{ range $pages }}{{ partial "row.html" (dict "p" . "tags" true) }}{{ end }}
+</ol>
+{{ else }}
+<div class="empty">
+  <p><strong>{{ i18n "no_posts" }}</strong></p>
+  <p>{{ i18n "no_posts_more" }}</p>
+  {{ if eq .Section "posts" }}
+  <ul class="mini empty__links">
+    <li><a href="{{ (site.GetPage "/lessons").RelPermalink }}">{{ i18n "recent_talks" }}</a></li>
+    <li><a href="{{ "/hea/" | relURL }}">{{ i18n "recent_hea" }}</a></li>
+  </ul>
+  {{ end }}
+</div>
+{{ end }}
+{{ end }}

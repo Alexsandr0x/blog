@@ -7,7 +7,7 @@ repo: "https://github.com/Alexsandr0x/flappy-bem-te-vi"
 rom: "/games/flappy-bem-te-vi/flappy-bem-te-vi.gba"
 ---
 
-Um clone pequeno de Flappy Bird feito para Game Boy Advance, escrito em Rust com a crate [`agb`](https://github.com/agbrs/agb). A versão abaixo roda direto no navegador via EmulatorJS.
+Um clone pequeno de Flappy Bird feito para Game Boy Advance, escrito em Rust com a crate [`agb`](https://github.com/agbrs/agb). A versão abaixo roda direto no navegador via [EmulatorJS](https://emulatorjs.org/).
 
 {{< gba-embed src="/games/flappy-bem-te-vi/" title="Flappy Bem-te-vi" >}}
 

@@ -1,0 +1,3 @@
+{{- /* true para páginas que não devem ir ao Google: site em modo noindex, páginas de tag/categoria (fininhas) e seções sem itens listados. */ -}}
+{{- $r := or site.Params.noindex (in (slice "taxonomy" "term") .Kind) (and (eq .Kind "section") (eq (len .Pages) 0)) -}}
+{{- return $r -}}

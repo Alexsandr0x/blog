@@ -1,0 +1,8 @@
+{{ define "main" }}
+<section class="lost">
+  <h1 class="glitch" data-text="404">404</h1>
+  <h2>{{ i18n "lost_title" }}</h2>
+  <p>{{ i18n "lost_text" }}</p>
+  <p><a class="btn" href="{{ "/" | relLangURL }}">{{ i18n "go_home" }}</a></p>
+</section>
+{{ end }}

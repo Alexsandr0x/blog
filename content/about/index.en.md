@@ -1,22 +1,22 @@
 +++
 title = "About"
 translationKey = "about"
+description = "Who Alexsandro is: Data Tech Lead, teacher by vocation, interested in software architecture, Rust and vintage hardware."
 tags = ["about", "en"]
 +++
 
+{{< fotos alt="Photo of Alexsandro with a glitch effect" >}}
 
 ## Hello! You can call me Alex :D
 
-My name is Alexsandro, but I prefer Alex.
-
-Tech Lead & Data Coordinator at [ImpulsoGov](https://www.impulsogov.org/), where I take care of our Data Warehouse architecture, data pipelines and Cloud infrastructure applied to public health.
+I'm Alexsandro, but everyone calls me Alex. Data Coordinator and Tech Lead at [ImpulsoGov](https://www.impulsogov.org/), where I handle the Data Warehouse architecture, the data pipelines and the cloud infrastructure behind public health work.
 
 Other technical interests: software architecture, event-driven systems, Rust, 3D printing and vintage hardware (mainly Game Boy Advance).
 
 ## Teacher
 
-Teaching has followed me throughout the years — from basic programming to data engineering. If you have a tech education project and need a hand, reach out.
+I've been teaching for years, from basic programming to data engineering. If you run a tech education project and could use a hand, [reach out on LinkedIn](https://linkedin.com/in/Alexsandr0x).
 
 ## I write down what I learn
 
-I have a repository called [HEA (Hoje Eu Aprendi / Today I Learned)](https://github.com/Alexsandr0x/hea) where I log small day-to-day discoveries — far from polished posts, but hopefully useful to someone.
+I have a repository called [HEA (Hoje Eu Aprendi / Today I Learned)](https://github.com/Alexsandr0x/hea) where I log small day-to-day discoveries. They're far from polished posts, but someone may find them useful.

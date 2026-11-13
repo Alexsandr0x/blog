@@ -1,8 +1,9 @@
 +++
 title = "Talks"
 translationKey = "lessons"
+description = "Talks and classes by Alexsandro on data engineering, architecture and Airflow, with slides."
 +++
 
-Talks and presentations about data engineering, architecture and whatever else I found interesting enough to share publicly.
+Talks and presentations about data engineering, architecture and whatever else seemed worth sharing in public.
 
-More coming in 2026.
+New talks are added here as they happen.

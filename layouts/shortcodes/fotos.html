@@ -1,0 +1,7 @@
+{{- $alt := .Get "alt" | default "Foto de Alexsandro" -}}
+<figure class="photo">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="{{ "images/about/alex-crt-static.jpg" | relURL }}">
+    <img src="{{ "images/about/alex-crt.gif" | relURL }}" width="400" height="400" alt="{{ $alt }}">
+  </picture>
+</figure>

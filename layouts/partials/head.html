@@ -1,37 +1,33 @@
-<title>{{ with .Title }}{{ . }} &ndash; {{end}}{{ .Site.Title }}</title>
-
-{{ $desc := .Params.description | default .Site.Params.about.description }}
-<meta name="description" content="{{ $desc }}">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8"/>
-{{ if .Site.Params.noindex }}<meta name="robots" content="noindex" />{{ end }}
+<meta name="theme-color" content="#0a0f12">
+<title>{{ if and .Title (not .IsHome) }}{{ .Title }} &ndash; {{ end }}{{ .Site.Title }}</title>
+{{ $desc := .Params.description | default (i18n "hero_lead") }}
+<meta name="description" content="{{ $desc }}">
+{{ if partial "is-noindex.html" . }}<meta name="robots" content="noindex, follow">{{ end }}
+{{ with .Site.Params.googleSiteVerification }}<meta name="google-site-verification" content="{{ . }}">{{ end }}
 
 {{ $ogImage := "" }}
 {{ $imgMatches := findRE `src="(/images/[^"]+)"` .RawContent 1 }}
-{{ if $imgMatches }}
-  {{ $ogImage = index $imgMatches 0 | replaceRE `src="([^"]+)"` "$1" | absURL }}
-{{ end }}
+{{ if $imgMatches }}{{ $ogImage = index $imgMatches 0 | replaceRE `src="([^"]+)"` "$1" | absURL }}{{ end }}
 
 <meta property="og:site_name" content="{{ .Site.Title }}">
-<meta property="og:title" content="{{ with .Title }}{{ . }} – {{ end }}{{ .Site.Title }}">
+<meta property="og:title" content="{{ if and .Title (not .IsHome) }}{{ .Title }} – {{ end }}{{ .Site.Title }}">
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:url" content="{{ .Permalink }}">
-{{ if .IsPage }}<meta property="og:type" content="article">
-{{ else }}<meta property="og:type" content="website">
-{{ end }}
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 {{ with $ogImage }}<meta property="og:image" content="{{ . }}">{{ end }}
-
 <meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}">
-<meta name="twitter:title" content="{{ with .Title }}{{ . }} – {{ end }}{{ .Site.Title }}">
+<meta name="twitter:title" content="{{ if and .Title (not .IsHome) }}{{ .Title }} – {{ end }}{{ .Site.Title }}">
 <meta name="twitter:description" content="{{ $desc }}">
 {{ with $ogImage }}<meta name="twitter:image" content="{{ . }}">{{ end }}
 
 <link rel="icon" type="image/png" href="{{ "favicon.png" | absURL }}">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}">
+{{ range .AllTranslations }}<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">{{ end }}
 
-<!-- FontAwesome <https://fontawesome.com/> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
-
-<!-- risotto theme -->
-<link rel="stylesheet" href="{{ printf "css/palettes/%s.css" (.Site.Params.theme.palette | default "base16-dark") | absURL }}">
-<link rel="stylesheet" href="{{ "css/risotto.css" | absURL }}">
-<link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
+<link rel="preload" as="font" type="font/woff2" href="{{ "fonts/ShipporiMincho-800.woff2" | absURL }}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ "fonts/JetBrainsMono-400.woff2" | absURL }}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ "fonts/ChakraPetch-700.woff2" | absURL }}" crossorigin>
+<link rel="stylesheet" href="{{ "css/site.css" | absURL }}">
+{{ with site.Params.goatcounter }}{{ if hugo.IsProduction }}<script data-goatcounter="https://{{ . }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>{{ end }}{{ end }}

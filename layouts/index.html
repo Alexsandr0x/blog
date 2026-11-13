@@ -1,0 +1,90 @@
+{{ define "main" }}
+{{ $talks := where site.RegularPages "Section" "lessons" }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ $hea := where site.RegularPages "Section" "hea" }}
+{{ $fb := hugo.Sites.Default }}
+{{ $talksFallback := false }}{{ $heaFallback := false }}
+{{ if not $talks }}{{ $talks = where $fb.RegularPages "Section" "lessons" }}{{ $talksFallback = true }}{{ end }}
+{{ if not $hea }}{{ $hea = where $fb.RegularPages "Section" "hea" }}{{ $heaFallback = true }}{{ end }}
+{{ $projects := where site.RegularPages "Section" "projects" }}
+{{ $portfolio := site.GetPage "/portfolio" }}
+<div class="home">
+
+  <div class="home__col home__col--left">
+    <section class="panel" aria-labelledby="h-find">
+      <p class="panel__title" id="h-find">{{ i18n "find_me" }}</p>
+      <ul class="mini">
+        {{ range site.Params.socialLinks }}<li><a href="{{ .url }}" rel="me" data-goatcounter-click="social/{{ .title | lower }}">{{ .title }}</a></li>{{ end }}
+      </ul>
+    </section>
+  </div>
+
+  <div class="home__col">
+    <section class="hero panel" aria-labelledby="h-name">
+      <div class="hero__dots" aria-hidden="true"></div>
+      <div class="hero__hud" aria-hidden="true">
+        <i class="hud-corner hud-corner--tl"></i><i class="hud-corner hud-corner--bl"></i><i class="hud-corner hud-corner--br"></i>
+        <div class="hud-ruler"><b class="hud-marker"></b></div>
+        <div class="hud-ring"><i></i></div>
+        <div class="hud-readout"><span>SYS.ONLINE</span><i class="hud-bars"><b></b><b></b><b></b><b></b></i></div>
+        <div class="hud-scan"></div>
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__body">
+        <h1 class="hero__name glitch" id="h-name" data-text="Alexsandro">Alexsandro</h1>
+        <p class="hero__lead">{{ i18n "hero_lead" }}</p>
+        <div class="btns">
+          {{ with $portfolio }}<a class="btn" href="{{ .RelPermalink }}">{{ i18n "see_portfolio" }}</a>{{ end }}
+          <a class="btn btn--ghost" href="{{ (site.GetPage "/lessons").RelPermalink }}">{{ i18n "see_talks" }}</a>
+        </div>
+      </div>
+    </section>
+
+    {{ with $talks }}
+    <section class="panel" aria-labelledby="h-talks">
+      <h2 class="panel__title" id="h-talks"><a href="{{ (site.GetPage "/lessons").RelPermalink }}">{{ i18n "recent_talks" }}</a></h2>
+      <div class="crt">
+        <div class="crt__band" aria-hidden="true"></div>
+        <p class="crt__line" aria-hidden="true"><span class="crt__prompt">alex@dev:~$</span> {{ i18n "talks_cmd" }}</p>
+        <ul class="crt__out">
+          {{ range first 4 .ByDate.Reverse }}
+          <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (cond .Params.apenasAno "2006" "2006-01-02") }}</time><a href="{{ .RelPermalink }}"{{ if $talksFallback }} lang="pt-br"{{ end }}>{{ .Title | markdownify }}</a></li>
+          {{ end }}
+        </ul>
+        <p class="crt__line" aria-hidden="true"><span class="crt__prompt">alex@dev:~$</span> <span class="crt__caret"></span></p>
+      </div>
+    </section>
+    {{ end }}
+
+    {{ with $posts }}
+    <section class="panel" aria-labelledby="h-posts">
+      <h2 class="panel__title" id="h-posts"><a href="{{ (site.GetPage "/posts").RelPermalink }}">{{ i18n "recent_posts" }}</a></h2>
+      <ol class="rows" style="max-width:none">
+        {{ range first 3 .ByDate.Reverse }}{{ partial "row.html" (dict "p" . "compact" true) }}{{ end }}
+      </ol>
+    </section>
+    {{ end }}
+  </div>
+
+  <div class="home__col">
+    <section class="panel" aria-labelledby="h-hea">
+      <h2 class="panel__title" id="h-hea"><a href="{{ "/hea/" | relURL }}">{{ i18n "recent_hea" }}</a></h2>
+      {{ with $hea }}
+      <ul class="mini">
+        {{ range first 6 .ByDate.Reverse }}<li>{{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>{{ end }}<a href="{{ .RelPermalink }}"{{ if $heaFallback }} lang="pt-br"{{ end }}>{{ .Title | markdownify }}</a></li>{{ end }}
+      </ul>
+      {{ else }}<p style="color:var(--muted)">{{ i18n "no_hea" }}</p>{{ end }}
+    </section>
+
+    {{ with $projects }}
+    <section class="panel" aria-labelledby="h-proj">
+      <h2 class="panel__title" id="h-proj"><a href="{{ (site.GetPage "/projects").RelPermalink }}">{{ i18n "featured_project" }}</a></h2>
+      <ul class="mini">
+        {{ range first 2 .ByDate.Reverse }}<li><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>{{ with .Description }}<p style="margin:.25rem 0 0;color:var(--muted);font-size:.875rem">{{ . }}</p>{{ end }}</li>{{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </div>
+
+</div>
+{{ end }}

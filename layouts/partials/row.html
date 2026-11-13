@@ -1,0 +1,11 @@
+{{/* Linha de lista. Contexto: dict "p" página, "tags" bool, "meta" string opcional, "compact" bool */}}
+{{ $p := .p }}
+<li class="row{{ if .compact }} row--compact{{ end }}{{ with .class }} {{ . }}{{ end }}">
+  {{ if not $p.Date.IsZero }}<time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format (cond $p.Params.apenasAno "2006" "2006-01-02") }}</time>{{ else }}<span></span>{{ end }}
+  <div>
+    <h2 class="row__title"><a href="{{ $p.RelPermalink }}">{{ $p.Title | markdownify }}</a></h2>
+    {{ with .meta }}<p class="row__desc">{{ . }}</p>{{ else }}{{ with $p.Description }}<p class="row__desc">{{ . }}</p>{{ end }}{{ end }}
+    {{ with .chips }}<ul class="tags tags--chips">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+    {{ if .tags }}{{ with $p.Params.tags }}<ul class="tags">{{ range . }}{{ $tag := . }}{{ with site.GetPage (printf "/tags/%s" ($tag | urlize)) }}<li><a href="{{ .RelPermalink }}">{{ $tag }}</a></li>{{ else }}<li>{{ $tag }}</li>{{ end }}{{ end }}</ul>{{ end }}{{ end }}
+  </div>
+</li>

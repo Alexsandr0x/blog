@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="read">
+  <header class="read__head">
+    <h1 class="glitch" data-text="{{ .Title | plainify }}">{{ .Title | markdownify }}</h1>
+  </header>
+  {{ with .Params.lead }}<p class="lead" style="max-width:var(--measure);margin:0 0 1.75rem">{{ . }}</p>{{ end }}
+  <section class="panel facts" aria-label="{{ i18n "channels" }}">
+    <dl>
+      {{ with site.Params.contactEmail }}
+      <dt>Email</dt>
+      <dd><a href="mailto:{{ . | safeURL }}" data-goatcounter-click="contato/email">{{ . | replaceRE "@" "&#64;" | safeHTML }}</a></dd>
+      {{ end }}
+      {{ range site.Params.socialLinks }}
+      <dt>{{ .title }}</dt>
+      <dd><a href="{{ .url }}" rel="me" data-goatcounter-click="contato/{{ .title | lower }}">{{ .url | replaceRE "^https?://(www\\.)?" "" }}</a></dd>
+      {{ end }}
+    </dl>
+  </section>
+  <div class="prose" style="margin-top:2.5rem">{{ .Content }}</div>
+</article>
+{{ end }}
