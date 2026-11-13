@@ -3,10 +3,10 @@ title: "Portfólio"
 translationKey: "portfolio"
 description: "Trajetória, atuação e formação de Alexsandro: dados, engenharia e docência."
 resumo: "Tech Lead de Dados na ImpulsoGov, onde cuido da arquitetura do Data Warehouse, dos pipelines e da infraestrutura cloud aplicados à saúde pública. Professor por vocação: dou aulas e palestras sobre dados e programação há anos."
-destaques:
-  - "Tech Lead de Dados na ImpulsoGov desde 2023"
-  - "Palestrante no TDC São Paulo 2026"
-  - "Cofundador do Semeando Educação: centenas de escolas visitadas"
+# destaques:
+#   - "Tech Lead de Dados na ImpulsoGov desde 2023"
+#   - "Palestrante no TDC São Paulo 2026"
+#   - "Cofundador do Semeando Educação: centenas de escolas visitadas"
 atuacao:
   - periodo: "set/2023 – atual"
     cargo: "Coordenador de Dados e Tech Lead"

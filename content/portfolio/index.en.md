@@ -3,10 +3,10 @@ title: "Portfolio"
 translationKey: "portfolio"
 description: "Alexsandro's background, work and education: data, engineering and teaching."
 resumo: "Data Tech Lead at ImpulsoGov, where I look after the Data Warehouse architecture, pipelines and cloud infrastructure applied to public health. Teacher by vocation: I have been giving classes and talks about data and programming for years."
-destaques:
-  - "Data Tech Lead at ImpulsoGov since 2023"
-  - "Speaker at TDC São Paulo 2026"
-  - "Co-founder of Semeando Educação: hundreds of schools visited"
+# destaques:
+#   - "Data Tech Lead at ImpulsoGov since 2023"
+#   - "Speaker at TDC São Paulo 2026"
+#   - "Co-founder of Semeando Educação: hundreds of schools visited"
 atuacao:
   - periodo: "Sep 2023 – present"
     cargo: "Data Coordinator and Tech Lead"
