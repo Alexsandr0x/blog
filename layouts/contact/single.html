@@ -1,21 +1,129 @@
 {{ define "main" }}
-<article class="read">
+<article class="read read--contact">
   <header class="read__head">
     <h1 class="glitch" data-text="{{ .Title | plainify }}">{{ .Title | markdownify }}</h1>
   </header>
-  {{ with .Params.lead }}<p class="lead" style="max-width:var(--measure);margin:0 0 1.75rem">{{ . }}</p>{{ end }}
-  <section class="panel facts" aria-label="{{ i18n "channels" }}">
-    <dl>
-      {{ with site.Params.contactEmail }}
-      <dt>Email</dt>
-      <dd><a href="mailto:{{ . | safeURL }}" data-goatcounter-click="contato/email">{{ . | replaceRE "@" "&#64;" | safeHTML }}</a></dd>
+  {{ with .Params.lead }}<p class="lead contact__lead">{{ . }}</p>{{ end }}
+  <div class="contact">
+    <div class="contact__main">
+      <div class="prose contact__topics">{{ .Content }}</div>
+      {{ with site.Params.web3formsKey }}
+      <section class="panel cform" id="cform-panel" aria-labelledby="cform-title">
+        <h2 id="cform-title" class="panel__title">{{ i18n "form_title" }}</h2>
+        <form id="cform" action="https://api.web3forms.com/submit" method="POST" novalidate
+              data-sending="{{ i18n "form_sending" }}" data-mail="{{ site.Params.contactEmail }}" data-mailto="{{ i18n "form_mailto" }}"
+              data-err-name="{{ i18n "form_err_name" }}" data-err-msg="{{ i18n "form_err_msg" }}"
+              data-err-email-empty="{{ i18n "form_err_email_empty" }}" data-err-email="{{ i18n "form_err_email" }}">
+          <input type="hidden" name="access_key" value="{{ . }}">
+          <input type="hidden" name="subject" value="{{ site.Title }}: {{ i18n "form_title" }}">
+          <input type="hidden" name="from_name" value="{{ site.Title }}">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+          <div class="cform__pair">
+            <div class="cf">
+              <label for="cf-name">{{ i18n "form_name" }}</label>
+              <div class="cf__box"><input id="cf-name" name="name" type="text" required maxlength="120" autocomplete="name" placeholder="{{ i18n "form_name_ph" }}" aria-describedby="cf-name-err" data-err="err-name"></div>
+              <p class="cf__err" id="cf-name-err"></p>
+            </div>
+            <div class="cf">
+              <label for="cf-email">{{ i18n "form_email" }}</label>
+              <div class="cf__box"><input id="cf-email" name="email" type="email" required maxlength="200" autocomplete="email" inputmode="email" placeholder="{{ i18n "form_email_ph" }}" aria-describedby="cf-email-err" data-err="err-email-empty"></div>
+              <p class="cf__err" id="cf-email-err"></p>
+            </div>
+          </div>
+          <div class="cf">
+            <div class="cf__row"><label for="cf-msg">{{ i18n "form_message" }}</label><span class="cf__count" id="cf-count">0/2000</span></div>
+            <div class="cf__box cf__box--area"><textarea id="cf-msg" name="message" rows="7" required maxlength="2000" placeholder="{{ i18n "form_msg_ph" }}" aria-describedby="cf-msg-err cf-count" data-err="err-msg"></textarea></div>
+            <p class="cf__err" id="cf-msg-err"></p>
+          </div>
+          <div class="cform__foot">
+            <button class="btn" type="submit"><span class="cform__lbl">{{ i18n "form_send" }}</span></button>
+            <p id="cform-status" class="cform__status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+        <div class="cform__done" id="cform-done" hidden tabindex="-1">
+          <p class="cform__done-title">{{ i18n "form_done_title" }}</p>
+          <p id="cform-done-text" data-tpl="{{ i18n "form_ok" }}"></p>
+          <div class="btns"><button class="btn btn--ghost" type="button" id="cform-again">{{ i18n "form_again" }}</button></div>
+        </div>
+      </section>
+      <script>
+      (function () {
+        var f = document.getElementById('cform'); if (!f) return;
+        var d = f.dataset, panel = document.getElementById('cform-panel'), done = document.getElementById('cform-done'),
+            doneText = document.getElementById('cform-done-text'),
+            st = document.getElementById('cform-status'), btn = f.querySelector('button[type=submit]'),
+            lbl = btn.querySelector('.cform__lbl'), count = document.getElementById('cf-count'),
+            msg = document.getElementById('cf-msg'), idle = lbl.textContent;
+        var fields = f.querySelectorAll('input[required], textarea[required]');
+        function dkey(k) { return k.replace(/-([a-z])/g, function (_, c) { return c.toUpperCase(); }); }
+        function fieldErr(el, text) {
+          var out = document.getElementById(el.id + '-err');
+          out.textContent = text || ''; if (text) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+        }
+        function check(el) {
+          var v = el.value.trim();
+          if (!v) { fieldErr(el, d[dkey(el.dataset.err)]); return false; }
+          if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { fieldErr(el, d.errEmail); return false; }
+          fieldErr(el, ''); return true;
+        }
+        fields.forEach(function (el) {
+          el.addEventListener('blur', function () { if (el.value) check(el); });
+          el.addEventListener('input', function () { if (el.getAttribute('aria-invalid')) check(el); });
+        });
+        function grow() {
+          msg.style.height = 'auto';
+          var max = Math.max(160, window.innerHeight * 0.7);
+          msg.style.height = Math.min(msg.scrollHeight, max) + 'px';
+          msg.style.overflowY = msg.scrollHeight > max ? 'auto' : 'hidden';
+        }
+        msg.addEventListener('input', function () { count.textContent = msg.value.length + '/2000'; grow(); });
+        window.addEventListener('resize', grow); grow();
+        function busy(on) {
+          btn.disabled = on; btn.setAttribute('aria-busy', on ? 'true' : 'false');
+          lbl.textContent = on ? d.sending : idle; lbl.classList.toggle('is-busy', on);
+        }
+        function fail() {
+          st.textContent = {{ i18n "form_error" }} + ' '; st.classList.add('is-err');
+          if (!d.mail) return;
+          var a = document.createElement('a');
+          a.href = 'mailto:' + d.mail + '?subject=' + encodeURIComponent(f.querySelector('[name=subject]').value) + '&body=' + encodeURIComponent(msg.value);
+          a.textContent = d.mailto; st.appendChild(a);
+        }
+        f.addEventListener('submit', function (e) {
+          e.preventDefault(); st.textContent = ''; st.className = 'cform__status';
+          var bad = Array.prototype.filter.call(fields, function (el) { return !check(el); });
+          if (bad.length) { bad[0].focus(); return; }
+          busy(true);
+          fetch(f.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(f))) })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+              if (!res.success) throw new Error();
+              doneText.textContent = doneText.dataset.tpl.replace('%s', document.getElementById('cf-email').value.trim());
+              f.hidden = true; done.hidden = false; panel.classList.add('panel--hot'); done.focus();
+              if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'contato/formulario', title: 'Formulário enviado', event: true });
+            })
+            .catch(fail)
+            .finally(function () { busy(false); });
+        });
+        document.getElementById('cform-again').addEventListener('click', function () {
+          f.reset(); count.textContent = '0/2000'; grow(); done.hidden = true; f.hidden = false; panel.classList.remove('panel--hot'); document.getElementById('cf-name').focus();
+        });
+      })();
+      </script>
       {{ end }}
-      {{ range site.Params.socialLinks }}
-      <dt>{{ .title }}</dt>
-      <dd><a href="{{ .url }}" rel="me" data-goatcounter-click="contato/{{ .title | lower }}">{{ .url | replaceRE "^https?://(www\\.)?" "" }}</a></dd>
-      {{ end }}
-    </dl>
-  </section>
-  <div class="prose" style="margin-top:2.5rem">{{ .Content }}</div>
+    </div>
+    <aside class="panel facts" aria-label="{{ i18n "channels" }}">
+      <dl>
+        {{ with site.Params.contactEmail }}
+        <dt>Email</dt>
+        <dd><a href="mailto:{{ . | safeURL }}" data-goatcounter-click="contato/email">{{ . | replaceRE "@" "&#64;" | safeHTML }}</a></dd>
+        {{ end }}
+        {{ range site.Params.socialLinks }}
+        <dt>{{ .title }}</dt>
+        <dd><a href="{{ .url }}" rel="me" data-goatcounter-click="contato/{{ .title | lower }}">{{ .url | replaceRE "^https?://(www\\.)?" "" }}</a></dd>
+        {{ end }}
+      </dl>
+    </aside>
+  </div>
 </article>
 {{ end }}

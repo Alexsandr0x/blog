@@ -16,7 +16,3 @@ Outros interesses técnicos: arquitetura de software, sistemas orientados a even
 ## Professor
 
 Dou aula há anos, de programação básica a engenharia de dados. Se você toca um projeto de educação em tecnologia e precisa de uma mão, [me chama no LinkedIn](https://linkedin.com/in/Alexsandr0x).
-
-## Anoto o que aprendo
-
-Tenho um repositório chamado [HEA (Hoje Eu Aprendi)](https://github.com/Alexsandr0x/hea) onde registro pequenas descobertas do dia a dia. Está longe de ser post polido, mas pode servir a alguém.

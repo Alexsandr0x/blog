@@ -83,3 +83,49 @@ other = "Detalhes"
 other = "Links"
 [lang_switch]
 other = "Idioma / Language"
+
+[form_title]
+other = "Mandar mensagem"
+[form_name]
+other = "Nome"
+[form_email]
+other = "Seu email"
+[form_message]
+other = "Mensagem"
+[form_send]
+other = "Enviar"
+[form_sending]
+other = "Enviando…"
+[form_ok]
+other = "Vou responder para %s."
+[form_error]
+other = "Não consegui enviar. O texto continua aí; se preferir, mande pelo seu programa de email:"
+[form_privacy]
+other = "A mensagem passa pelo serviço Web3Forms até chegar à minha caixa de entrada. Uso o seu email só para responder."
+
+[form_name_ph]
+other = "Como posso te chamar"
+[form_email_ph]
+other = "voce@exemplo.com"
+[form_msg_ph]
+other = "Conte o que você precisa."
+[form_err_required]
+other = "Preencha este campo."
+[form_err_email]
+other = "Esse email parece incompleto."
+[form_done_title]
+other = "Mensagem recebida"
+[form_again]
+other = "Enviar outra"
+
+[form_err_name]
+other = "Diga como posso te chamar."
+
+[form_err_msg]
+other = "Escreva sua mensagem."
+
+[form_err_email_empty]
+other = "Informe seu email para eu poder responder."
+
+[form_mailto]
+other = "Abrir no meu email"

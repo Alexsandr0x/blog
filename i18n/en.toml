@@ -83,3 +83,49 @@ other = "Details"
 other = "Links"
 [lang_switch]
 other = "Idioma / Language"
+
+[form_title]
+other = "Send a message"
+[form_name]
+other = "Name"
+[form_email]
+other = "Your email"
+[form_message]
+other = "Message"
+[form_send]
+other = "Send"
+[form_sending]
+other = "Sending…"
+[form_ok]
+other = "I'll reply to %s."
+[form_error]
+other = "Couldn't send it. Your text is still there; if you'd rather, send it from your email app:"
+[form_privacy]
+other = "Your message goes through the Web3Forms service before reaching my inbox. I use your email only to reply."
+
+[form_name_ph]
+other = "What should I call you"
+[form_email_ph]
+other = "you@example.com"
+[form_msg_ph]
+other = "Tell me what you need."
+[form_err_required]
+other = "Fill in this field."
+[form_err_email]
+other = "That email looks incomplete."
+[form_done_title]
+other = "Message received"
+[form_again]
+other = "Send another"
+
+[form_err_name]
+other = "Tell me what to call you."
+
+[form_err_msg]
+other = "Write your message."
+
+[form_err_email_empty]
+other = "Enter your email so I can reply."
+
+[form_mailto]
+other = "Open in my email"

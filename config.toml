@@ -7,9 +7,10 @@ ignoreFiles = ['.*README\.md$', '.*\.gitkeep$']
 noindex = false
 # GoatCounter: nome da conta (ex.: "alexsandro" para alexsandro.goatcounter.com). Vazio = desligado.
 goatcounter = "alexsandr0x"
-# Contato: página em rascunho (content/contact, draft: true) e fora do menu até o email receber de verdade. Para reativar: preencher contactEmail, tirar o draft e recolocar o item "contact" no menu.
-# Email público da página de contato. Só preencha depois que o endereço existir e estiver recebendo.
-contactEmail = ""
+# Email público da página de contato (content/contact).
+contactEmail = "contato@alexsandro.dev"
+# Web3Forms: chave de acesso (pública por desenho). Vazio = esconde o formulário.
+web3formsKey = "e76bfbe5-8162-4531-8b5a-7155ffd48147"
 # Google Search Console: conteúdo da meta de verificação (só se verificar por tag HTML). Vazio = sem a tag.
 googleSiteVerification = ""
 
@@ -69,6 +70,12 @@ icon = "fa-brands fa-github"
       url = "/hea/"
       weight = 6
 
+    [[languages.pt-br.menu.main]]
+      identifier = "contact"
+      name = "Contato"
+      url = "/contact/"
+      weight = 7
+
   [languages.en]
     label = 'English'
     locale = 'en-US'
@@ -111,6 +118,12 @@ icon = "fa-brands fa-github"
       weight = 6
       [languages.en.menu.main.params]
         langless = true
+
+    [[languages.en.menu.main]]
+      identifier = "contact"
+      name = "Contact"
+      url = "/contact/"
+      weight = 7
 
 
 [markup]

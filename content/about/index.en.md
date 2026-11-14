@@ -16,7 +16,3 @@ Other technical interests: software architecture, event-driven systems, Rust, 3D
 ## Teacher
 
 I've been teaching for years, from basic programming to data engineering. If you run a tech education project and could use a hand, [reach out on LinkedIn](https://linkedin.com/in/Alexsandr0x).
-
-## I write down what I learn
-
-I have a repository called [HEA (Hoje Eu Aprendi / Today I Learned)](https://github.com/Alexsandr0x/hea) where I log small day-to-day discoveries. They're far from polished posts, but someone may find them useful.
