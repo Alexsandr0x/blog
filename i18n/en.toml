@@ -16,6 +16,8 @@ other = "Posts"
 other = "Latest HEA"
 [featured_project]
 other = "Projects"
+[github_stats]
+other = "GitHub"
 [see_all]
 other = "see all"
 [no_posts]
