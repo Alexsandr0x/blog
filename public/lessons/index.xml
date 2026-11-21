@@ -1,2 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Aulas e Apresentações on Alexsandro</title><link>https://alexsandro.dev/lessons/</link><description>Recent content in Aulas e Apresentações on Alexsandro</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 15 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://alexsandro.dev/lessons/index.xml" rel="self" type="application/rss+xml"/><item><title>Construindo o Pipeline de Dados da ImpulsoGov</title><link>https://alexsandro.dev/lessons/semana-eng-usp-saocarlos-2025/</link><pubDate>Wed, 15 Oct 2025 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/lessons/semana-eng-usp-saocarlos-2025/</guid><description>Apresentação realizada em nome da ImpulsoGov na Semana da Engenharia de Computação da USP São Carlos.
-O conteúdo aborda a construção do pipeline de dados da organização — as decisões de arquitetura, as ferramentas adotadas e os aprendizados colhidos ao longo do processo de estruturar engenharia de dados em um contexto de saúde pública.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Palestras on Alexsandro</title>
+		<link>http://localhost:1313/lessons/</link>
+		<description>Recent content in Palestras on Alexsandro</description>
+		<generator>Hugo</generator>
+		<language>pt-BR</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 19 Oct 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/lessons/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Dados que salvam vidas: como a ImpulsoGov escalou o cuidado no SUS com o Google Cloud</title>
+				<link>http://localhost:1313/lessons/feira-empreendedor-sebrae-sp-2026/</link>
+				<pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/lessons/feira-empreendedor-sebrae-sp-2026/</guid>
+				<description>&lt;p&gt;Apresentação feita em nome da &lt;a href=&#34;https://www.impulsogov.org/&#34;&gt;ImpulsoGov&lt;/a&gt; na Feira do Empreendedor Sebrae-SP.&lt;/p&gt;&#xA;&lt;p&gt;A palestra mostra como a ImpulsoGov passou de 65 para mais de 330 municípios na mesma infraestrutura, ao reconstruir a base de dados dentro do Google Cloud e processar só o que muda a cada dia. Com isso, uma nova lista nominal para as equipes de saúde passou de 3 meses para 15 dias no ar. Também mostro a arquitetura (Cloud Storage, GKE, BigQuery, Cloud Run e Cloud SQL) e o próximo passo: cuidado preditivo, com escore de risco por cidadão.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>5 Erros que Cometi ao Subir Apache Airflow em Produção</title>
+				<link>http://localhost:1313/lessons/tdc-sp-2026-airflow-erros/</link>
+				<pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/lessons/tdc-sp-2026-airflow-erros/</guid>
+				<description>&lt;p&gt;Apresentação realizada na trilha de Engenharia de Dados do &lt;a href=&#34;https://thedevconf.com/tdc/2026/sao-paulo/trilha-engenharia-de-dados&#34;&gt;TDC São Paulo 2026&lt;/a&gt;, no ProMagno.&lt;/p&gt;&#xA;&lt;p&gt;Cinco erros que cometi ao colocar o Apache Airflow em produção, entre decisões de arquitetura, limites de escala e rotina de operação. Serve a quem está montando orquestração de dados fora do tutorial.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/18PwTbgLbzz8U2mHgYJiO06Yi_GxXzdzsbqXnJ1PTMP0/edit?usp=drive_link&#34;&gt;Acessar slides&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;fontes--leitura-extra&#34;&gt;Fontes &amp;amp; leitura extra&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://airflow.apache.org/docs/&#34;&gt;Documentação do Apache Airflow&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.astronomer.io/docs/&#34;&gt;Documentação da Astronomer&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.astronomer.io/blog/debunking-myths-about-airflows-use-cases/&#34;&gt;Debunking myths about Airflow&amp;rsquo;s use cases&lt;/a&gt; — blog da Astronomer&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://academy.astronomer.io/path/airflow-101&#34;&gt;Airflow 101&lt;/a&gt; — curso gratuito no Astronomer Academy&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Construindo o Pipeline de Dados da ImpulsoGov</title>
+				<link>http://localhost:1313/lessons/semana-eng-usp-saocarlos-2025/</link>
+				<pubDate>Wed, 15 Oct 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/lessons/semana-eng-usp-saocarlos-2025/</guid>
+				<description>&lt;p&gt;Apresentação realizada em nome da &lt;a href=&#34;https://www.impulsogov.org/&#34;&gt;ImpulsoGov&lt;/a&gt; na Semana de Engenharia de Computação da USP São Carlos.&lt;/p&gt;&#xA;&lt;p&gt;A palestra conta como o pipeline de dados da organização foi construído: por que escolhemos cada ferramenta, o que a arquitetura precisou resolver e o que aprendemos ao estruturar engenharia de dados dentro da saúde pública.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Introdução ao IEEE VSSS com FIRASim</title>
+				<link>http://localhost:1313/lessons/intro-ieee-vsss-firasim/</link>
+				<pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/lessons/intro-ieee-vsss-firasim/</guid>
+				<description>&lt;p&gt;Aula introdutória ministrada para a equipe de robótica &lt;a href=&#34;https://github.com/project-neon&#34;&gt;Project Neon&lt;/a&gt; da Universidade Federal do ABC, sobre a modalidade IEEE VSSS e o simulador FIRASim, com os primeiros passos para escrever um cliente Python que conversa com o ambiente simulado.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://drive.google.com/file/d/1kGUXxK4I4Ho-X7X4HZUc45JiV2RIhDsV&#34;&gt;Acessar slides&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

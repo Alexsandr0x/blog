@@ -1,10 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Alexsandro</title><link>https://alexsandro.dev/en/</link><description>Recent content on Alexsandro</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 12 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://alexsandro.dev/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Flappy Bird Clone for Game Boy</title><link>https://alexsandro.dev/en/projects/flappy-bird-clone-gba/</link><pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/en/projects/flappy-bird-clone-gba/</guid><description>A small Flappy Bird clone for Game Boy Advance, written in Rust with the agb crate. The version below runs directly in the browser through EmulatorJS.
-Project links:
-Download GBA ROM GitHub repository</description></item><item><title>Basics of Concurrency and Parallelism in Python</title><link>https://alexsandro.dev/en/posts/python-parallelism/python-parallelism/</link><pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/en/posts/python-parallelism/python-parallelism/</guid><description>This content was originally prepared for the multi-robot systems tribe of the robotics team Project Neon in August 2022. The content is open to members, but I preferred to write a revised summary in this post.
-I made the content more agnostic by removing the mobile robotics references. I hope this attempt to make the concepts of concurrency and parallelism easy to understand is effective for someone!
-What is Parallelization? Parallelization, parallel programming, or parallel computing is the way of solving commands within a computational environment at the same time.</description></item><item><title>Requests + BeautifulSoup for web data capture!</title><link>https://alexsandro.dev/en/posts/web-scrapping-letras/web-scrapping-letras/</link><pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/en/posts/web-scrapping-letras/web-scrapping-letras/</guid><description>In the job market or in personal projects, it&amp;rsquo;s common to need to build your own database on a given topic before performing some analysis. This can happen with any kind of website that doesn&amp;rsquo;t provide an open API.
-So we can learn simple data scraping concepts using Python by simulating one of these problems. Let&amp;rsquo;s suppose the following scenario:
-Suppose you want to understand characteristics of a certain singer or band — any information you could use to compare two different musicians.</description></item><item><title>About</title><link>https://alexsandro.dev/en/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/en/about/</guid><description>Hello! You can call me Alex :D My name is Alexsandro, but I prefer Alex.
-I&amp;rsquo;m a tech guy interested in a lot of things, but mainly data related stuff. Currently a mid-senior data engineer and trying to improve myself in other areas such as software architecture.
-Other tech interests rely on robotics, 3D printing, python language and event driven systems.
-Robots playing Soccer! If you are interest in multi-robotics systems, you can learn a little more with my projects in Neon Robotics Team at Federal University of ABC!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Alexsandro</title>
+		<link>http://localhost:1313/en/</link>
+		<description>Recent content on Alexsandro</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 12 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Flappy Bird Clone for Game Boy</title>
+				<link>http://localhost:1313/en/projects/flappy-bird-clone-gba/</link>
+				<pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/projects/flappy-bird-clone-gba/</guid>
+				<description>&lt;p&gt;A small Flappy Bird clone for Game Boy Advance, written in Rust with the &lt;a href=&#34;https://github.com/agbrs/agb&#34;&gt;&lt;code&gt;agb&lt;/code&gt;&lt;/a&gt; crate. The version below runs directly in the browser through &lt;a href=&#34;https://emulatorjs.org/&#34;&gt;EmulatorJS&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;div class=&#34;gba-embed&#34;&gt;&#xA;  &lt;iframe&#xA;    src=&#34;http://localhost:1313/games/flappy-bem-te-vi/&#34;&#xA;    title=&#34;Flappy Bem-te-vi&#34;&#xA;    loading=&#34;lazy&#34;&#xA;    allowfullscreen&gt;&#xA;  &lt;/iframe&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Project links:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/games/flappy-bem-te-vi/flappy-bem-te-vi.gba&#34;&gt;Download GBA ROM&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/Alexsandr0x/flappy-bem-te-vi&#34;&gt;GitHub repository&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>About</title>
+				<link>http://localhost:1313/en/about/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/about/</guid>
+				<description>&lt;figure class=&#34;photo&#34;&gt;&#xA;  &lt;picture&gt;&#xA;    &lt;source media=&#34;(prefers-reduced-motion: reduce)&#34; srcset=&#34;http://localhost:1313/images/about/alex-crt-static.jpg&#34;&gt;&#xA;    &lt;img src=&#34;http://localhost:1313/images/about/alex-crt.gif&#34; width=&#34;400&#34; height=&#34;400&#34; alt=&#34;Photo of Alexsandro with a glitch effect&#34;&gt;&#xA;  &lt;/picture&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h2 id=&#34;hello-you-can-call-me-alex-d&#34;&gt;Hello! You can call me Alex :D&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m Alexsandro, but everyone calls me Alex. Data Coordinator and Tech Lead at &lt;a href=&#34;https://www.impulsogov.org/&#34;&gt;ImpulsoGov&lt;/a&gt;, where I handle the Data Warehouse architecture, the data pipelines and the cloud infrastructure behind public health work.&lt;/p&gt;&#xA;&lt;p&gt;Other technical interests: software architecture, event-driven systems, Rust, 3D printing and vintage hardware (mainly Game Boy Advance).&lt;/p&gt;&#xA;&lt;h2 id=&#34;teacher&#34;&gt;Teacher&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been teaching for years, from basic programming to data engineering. If you run a tech education project and could use a hand, &lt;a href=&#34;https://linkedin.com/in/Alexsandr0x&#34;&gt;reach out on LinkedIn&lt;/a&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Contact</title>
+				<link>http://localhost:1313/en/contact/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/contact/</guid>
+				<description>&lt;h2 id=&#34;what-about&#34;&gt;What about&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Invitations for talks and classes.&lt;/li&gt;&#xA;&lt;li&gt;Tech education projects.&lt;/li&gt;&#xA;&lt;li&gt;Consulting and projects.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Portfolio</title>
+				<link>http://localhost:1313/en/portfolio/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/portfolio/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

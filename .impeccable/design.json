@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-13T17:44:06.817552+00:00",
+  "title": "Design System: alexsandro.dev",
+  "extensions": {
+    "colorMeta": {
+      "base": {
+        "role": "neutral",
+        "displayName": "Preto de Tela",
+        "canonical": "#0a0f12",
+        "tonalRamp": [
+          "#141618",
+          "#2b2e31",
+          "#44484b",
+          "#5f6468",
+          "#7b8185",
+          "#a0a6a9",
+          "#c6cbcf",
+          "#ebeff2"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Superfície de Painel",
+        "canonical": "#121a1f",
+        "tonalRamp": [
+          "#131719",
+          "#292f32",
+          "#42494d",
+          "#5c656a",
+          "#788288",
+          "#9da6ac",
+          "#c4ccd1",
+          "#e9f0f4"
+        ]
+      },
+      "surface-deep": {
+        "role": "neutral",
+        "displayName": "Vidro Fundo",
+        "canonical": "#0d1519",
+        "tonalRamp": [
+          "#131719",
+          "#292f32",
+          "#42494d",
+          "#5c6569",
+          "#788287",
+          "#9da6ab",
+          "#c4ccd0",
+          "#e9f0f3"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Linha de Grade",
+        "canonical": "#26343c",
+        "tonalRamp": [
+          "#11171b",
+          "#272f34",
+          "#3f4a50",
+          "#58666d",
+          "#73838c",
+          "#99a7af",
+          "#c0cdd4",
+          "#e6f0f6"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Branco Quente",
+        "canonical": "#ece6d8",
+        "tonalRamp": [
+          "#181611",
+          "#302e27",
+          "#4b473f",
+          "#676358",
+          "#858073",
+          "#a9a499",
+          "#cecac0",
+          "#f2eee6"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Cinza de Metadado",
+        "canonical": "#8a979c",
+        "tonalRamp": [
+          "#121719",
+          "#282f32",
+          "#41494d",
+          "#5b6569",
+          "#768388",
+          "#9ba7ab",
+          "#c3ccd0",
+          "#e8f0f3"
+        ]
+      },
+      "amber": {
+        "role": "primary",
+        "displayName": "Âmbar de Fósforo",
+        "canonical": "#ffb000",
+        "tonalRamp": [
+          "#2b0c00",
+          "#4b2200",
+          "#6d3900",
+          "#925300",
+          "#b86d00",
+          "#d89618",
+          "#f7c06a",
+          "#ffe6a3"
+        ]
+      },
+      "amber-ink": {
+        "role": "neutral",
+        "displayName": "Tinta sobre Âmbar",
+        "canonical": "#1a1000",
+        "tonalRamp": [
+          "#1a150c",
+          "#342d20",
+          "#4f4636",
+          "#6d624e",
+          "#8b7f67",
+          "#afa38e",
+          "#d3c9b7",
+          "#f6eddf"
+        ]
+      },
+      "cyan": {
+        "role": "secondary",
+        "displayName": "Ciano de Apoio",
+        "canonical": "#46d9e8",
+        "tonalRamp": [
+          "#001d24",
+          "#003840",
+          "#00555f",
+          "#007480",
+          "#0094a3",
+          "#40b7c4",
+          "#82dbe6",
+          "#b6fdff"
+        ]
+      },
+      "alert-red": {
+        "role": "tertiary",
+        "displayName": "Vermelho de Alerta",
+        "canonical": "#ff5a4d",
+        "tonalRamp": [
+          "#390000",
+          "#5f0000",
+          "#880e0d",
+          "#b32520",
+          "#e03b32",
+          "#ff7364",
+          "#ffa495",
+          "#ffd0c2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nome do site e títulos de página."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "h2 de leitura."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h3 e títulos de lista."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido em 70ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Menu, botões, títulos de painel."
+      }
+    },
+    "shadows": [
+      {
+        "name": "phosphor-text",
+        "value": "0 2px 22px rgba(255,176,0,0.22)",
+        "purpose": "Brilho suave no nome do hero."
+      },
+      {
+        "name": "phosphor-crt",
+        "value": "0 0 6px rgba(255,176,0,0.4)",
+        "purpose": "Texto do monitor CRT."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Transições de cor e fundo."
+      },
+      {
+        "name": "dot-sweep",
+        "value": "26s linear infinite",
+        "purpose": "Máscara do painel de pontos do hero."
+      },
+      {
+        "name": "glitch-once",
+        "value": "0.7s steps(1,end) 0.15s 1",
+        "purpose": "Glitch curto no título de vitrine, só ao carregar."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "two-col",
+        "value": "68rem"
+      },
+      {
+        "name": "one-col",
+        "value": "52rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão principal",
+      "kind": "button",
+      "description": "Ação principal.",
+      "html": "<a class=\"ds-btn\">Ver portfólio</a>",
+      "css": ".ds-btn{display:inline-block;padding:.7rem 1.25rem;background:#ffb000;color:#1a1000;font:700 .875rem 'Chakra Petch',sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid #ffb000}.ds-btn:hover{background:#ece6d8;border-color:#ece6d8}.ds-btn:focus-visible{outline:2px solid #46d9e8;outline-offset:3px}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Botão fantasma",
+      "kind": "button",
+      "description": "Ação secundária.",
+      "html": "<a class=\"ds-ghost\">Ver palestras</a>",
+      "css": ".ds-ghost{display:inline-block;padding:.7rem 1.25rem;background:transparent;color:#ffb000;font:700 .875rem 'Chakra Petch',sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid #ffb000}.ds-ghost:hover{background:rgba(255,176,0,.12)}.ds-ghost:focus-visible{outline:2px solid #46d9e8;outline-offset:3px}",
+      "refersTo": "button-ghost"
+    },
+    {
+      "name": "Painel de canto cortado",
+      "kind": "card",
+      "description": "Contêiner padrão.",
+      "html": "<section class=\"ds-panel\"><h2>Últimos HEA</h2><p>Vector Databases</p></section>",
+      "css": ".ds-panel{position:relative;background:#121a1f;border:1px solid #26343c;padding:1.25rem 1.375rem;color:#ece6d8;font:1.0625rem/1.7 'JetBrains Mono',monospace;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%)}.ds-panel::after{content:'';position:absolute;top:-1px;right:-1px;width:15px;height:15px;background:linear-gradient(to top right,transparent calc(50% - .5px),#26343c calc(50% - .5px),#26343c calc(50% + .5px),transparent calc(50% + .5px))}.ds-panel h2{margin:0 0 1rem;font:700 .8125rem 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#ffb000}",
+      "refersTo": "panel"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "description": "Marcador de assunto.",
+      "html": "<span class=\"ds-tag\">databases</span>",
+      "css": ".ds-tag{display:inline-block;padding:.05rem .55rem;border:1px solid #26343c;color:#46d9e8;font:600 .75rem 'Chakra Petch',sans-serif;letter-spacing:.06em}",
+      "refersTo": "tag"
+    },
+    {
+      "name": "Menu principal",
+      "kind": "nav",
+      "description": "Navegação, estados padrão e ativo.",
+      "html": "<nav class=\"ds-nav\"><a>Posts</a><a aria-current=\"page\">Palestras</a></nav>",
+      "css": ".ds-nav{display:flex;gap:1.5rem}.ds-nav a{padding:.35rem 0;font:600 .875rem 'Chakra Petch',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#ece6d8;border-bottom:2px solid transparent}.ds-nav a:hover{color:#ffb000}.ds-nav a[aria-current]{color:#ffb000;border-bottom-color:#ffb000}"
+    },
+    {
+      "name": "Monitor CRT",
+      "kind": "custom",
+      "description": "Bloco de terminal com scanlines e vinheta.",
+      "html": "<div class=\"ds-crt\">alex@dev:~$ ls palestras/<br>2026-09-23 5 Erros ao subir Airflow</div>",
+      "css": ".ds-crt{position:relative;overflow:hidden;background:#070b0d;padding:1.25rem 1.375rem;color:#ffb000;font:1rem/1.7 'JetBrains Mono',monospace;text-shadow:0 0 6px rgba(255,176,0,.4)}.ds-crt::before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.26) 0 1px,transparent 1px 3px)}.ds-crt::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Painel técnico feito à mão",
+    "overview": "Uma máquina técnica e tensa por fora, didática e acolhedora por dentro. O site se comporta como um painel de controle feito à mão por alguém que quer ensinar.",
+    "keyCharacteristics": [
+      "Preto azulado nunca puro; um acento dominante e um de apoio.",
+      "Três vozes tipográficas com função fixa.",
+      "Três molduras: borda simples, canto cortado, linha dupla.",
+      "Efeitos só nas vitrines, em CSS, e param com prefers-reduced-motion."
+    ],
+    "rules": [
+      {
+        "name": "The Two Signals Rule",
+        "body": "Âmbar guia, ciano liga, vermelho avisa. Nenhuma outra cor de acento entra: verde, roxo e magenta estão fora.",
+        "section": "colors"
+      },
+      {
+        "name": "The Alert Is State Rule",
+        "body": "O vermelho nunca decora; só sinaliza estado.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Voices Rule",
+        "body": "Mincho só em nome e títulos de página; Chakra Petch só em estrutura (menu, rótulos, h2/h3); mono em tudo que se lê.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "Nenhum rótulo pequeno acima de um título e nenhuma numeração decorativa: o título carrega o próprio peso.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do manter leitura sem efeito: fundo liso, 70ch, contraste mínimo de 4,5:1.",
+      "Do usar âmbar para guiar e ciano para ligar; vermelho só para estado.",
+      "Do desenhar o canto cortado com a diagonal de 1px, não só com `clip-path`.",
+      "Do respeitar `prefers-reduced-motion` em todo efeito."
+    ],
+    "donts": [
+      "Don't usar kanji, listras de perigo, papel amassado ou outro ornamento do Evangelion.",
+      "Don't usar verde, roxo, magenta ou neon com vidro líquido.",
+      "Don't exigir clique para mostrar conteúdo, nem WebGL, bibliotecas externas ou voz sintetizada.",
+      "Don't empilhar mais de três tipos de moldura numa página."
+    ]
+  }
+}

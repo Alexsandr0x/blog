@@ -42,7 +42,7 @@ Máquina técnica e tensa por fora, didática e acolhedora por dentro. Hacker de
 Dwarf Fortress, UI kit HUD em âmbar (SARIF), coleção de elementos HUD em ciano (anti-board).
 
 ## Moodboard
-Painéis em PNG fora do repositório (contêm prints de jogos e anime): `~/Documents/moodboard-blog/`. Alvo emocional confirmado: "máquina técnica e tensa por fora, didática e acolhedora por dentro; hacker de garagem, não corporação distópica". Texturas: neutra de propósito (scanlines finas e pontos âmbar só nas vitrines).
+Os seis painéis em PNG foram arquivados no Cloud Storage. A lista de imagens, links públicos e arquivos de direção está em [design-assets.md](design-assets.md). Alvo emocional confirmado: "máquina técnica e tensa por fora, didática e acolhedora por dentro; hacker de garagem, não corporação distópica". Texturas: neutras de propósito (scanlines finas e pontos âmbar só nas vitrines).
 
 ## Decisões de estrutura (confirmadas)
 - HEA: lista única, por data.

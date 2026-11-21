@@ -1,6 +1,6 @@
 ---
 name: alexsandro.dev
-description: Terminal de garagem — painéis âmbar e ciano sobre preto azulado, texto claro e didático.
+description: Painéis âmbar e ciano sobre preto azulado, texto claro e didático.
 colors:
   base: "#0a0f12"
   surface: "#121a1f"
@@ -80,9 +80,13 @@ components:
 
 # Design System: alexsandro.dev
 
+## Referências visuais
+
+Os seis painéis do moodboard, a direção aprovada e o diagrama C4 redesenhado estão catalogados em [docs/design-assets.md](docs/design-assets.md), com cópias públicas no Cloud Storage.
+
 ## Overview
 
-**Creative North Star: "O Terminal de Garagem"**
+**Direção visual: painel técnico feito à mão**
 
 Uma máquina técnica e tensa por fora, didática e acolhedora por dentro. O site se comporta como um painel de controle feito à mão por alguém que quer ensinar: preto azulado, âmbar de fósforo como voz dominante, ciano como apoio, linhas finas de 1px e painéis de canto cortado sobre uma grade de caracteres. O visual vem de terminais de máquinas de ficção científica (NERV, HUD de Cyberpunk 2077) e de monitores ASCII, mas o texto continua simples.
 

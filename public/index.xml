@@ -1,11 +1,94 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Alexsandro</title><link>https://alexsandro.dev/</link><description>Recent content on Alexsandro</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 12 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://alexsandro.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Flappy Bird Clone para Game Boy</title><link>https://alexsandro.dev/projects/flappy-bird-clone-gba/</link><pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/projects/flappy-bird-clone-gba/</guid><description>Um clone pequeno de Flappy Bird feito para Game Boy Advance, escrito em Rust com a crate agb. A versão abaixo roda direto no navegador via EmulatorJS.
-Links do projeto:
-Baixar ROM GBA Repositório no GitHub</description></item><item><title>Construindo o Pipeline de Dados da ImpulsoGov</title><link>https://alexsandro.dev/lessons/semana-eng-usp-saocarlos-2025/</link><pubDate>Wed, 15 Oct 2025 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/lessons/semana-eng-usp-saocarlos-2025/</guid><description>Apresentação realizada em nome da ImpulsoGov na Semana da Engenharia de Computação da USP São Carlos.
-O conteúdo aborda a construção do pipeline de dados da organização — as decisões de arquitetura, as ferramentas adotadas e os aprendizados colhidos ao longo do processo de estruturar engenharia de dados em um contexto de saúde pública.</description></item><item><title>Basico de Concorrência e Paralelismo em Python</title><link>https://alexsandro.dev/posts/python-parallelism/python-parallelism/</link><pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/posts/python-parallelism/python-parallelism/</guid><description>Esse foi um conteúdo básico elaborado para a tribo de sistemas multi-robóticos da equipe de robótica Project Neon em agosto de 2022. O conteúdo é aberto a membros mas eu preferi fazer uma síntese com algumas correções nesta publicação.
-Tornei o conteúdo mais agnóstico removendo as referências de robótica móvel. Espero que essa tentativa de tornar os conceitos de concorrência e paralelismo fáceis de entender seja efetivo para alguém!
-O que é Paralelização?</description></item><item><title>Requests + BeautifulSoup para captura de dados web!</title><link>https://alexsandro.dev/posts/web-scrapping-letras/web-scrapping-letras/</link><pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/posts/web-scrapping-letras/web-scrapping-letras/</guid><description>Dentro do mercado de trabalho ou em projetos é comum a necessidade de criarmos nossa própria base de dados de algum assunto para depois fazermos alguma análise. Isso pode acontecer com qualquer tipo de site que não nos proporcione uma API aberta.
-Dessa forma podemos aprender conceitos simples de raspagem de dados usando Python simulando um problema desses. Nesse caso vamos supor um seguinte problema:
-Vamos supor que você queira entender características de um certo cantor ou banda, qualquer informação que você possa usar para comparar dois músicos diferentes.</description></item><item><title>Sobre</title><link>https://alexsandro.dev/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/about/</guid><description>Olá! Pode me chamar Alex :D Sou Alexsandro, mas eu prefiro Alex.
-Sou um cara de tecnologia interessando em um tanto de coisas, mas principalmente a area de dados. Atualmente sou um engenheiro de dados mid-senior e tentando evoluir em areas como arquitetura de software.
-Outros interesses tecnicos que tenho são robotica, impressão 3D, Python e event driven systems.
-Robôs Boleiros ?! Se você é interessado em sistemas multi-robóticos pode aprender um pouco mais com meus projetos na equipe de Robotica Neon da Universidade Federal do ABC!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Alexsandro</title>
+		<link>http://localhost:1313/</link>
+		<description>Recent content on Alexsandro</description>
+		<generator>Hugo</generator>
+		<language>pt-BR</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 19 Oct 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Dados que salvam vidas: como a ImpulsoGov escalou o cuidado no SUS com o Google Cloud</title>
+				<link>http://localhost:1313/lessons/feira-empreendedor-sebrae-sp-2026/</link>
+				<pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/lessons/feira-empreendedor-sebrae-sp-2026/</guid>
+				<description>&lt;p&gt;Apresentação feita em nome da &lt;a href=&#34;https://www.impulsogov.org/&#34;&gt;ImpulsoGov&lt;/a&gt; na Feira do Empreendedor Sebrae-SP.&lt;/p&gt;&#xA;&lt;p&gt;A palestra mostra como a ImpulsoGov passou de 65 para mais de 330 municípios na mesma infraestrutura, ao reconstruir a base de dados dentro do Google Cloud e processar só o que muda a cada dia. Com isso, uma nova lista nominal para as equipes de saúde passou de 3 meses para 15 dias no ar. Também mostro a arquitetura (Cloud Storage, GKE, BigQuery, Cloud Run e Cloud SQL) e o próximo passo: cuidado preditivo, com escore de risco por cidadão.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>5 Erros que Cometi ao Subir Apache Airflow em Produção</title>
+				<link>http://localhost:1313/lessons/tdc-sp-2026-airflow-erros/</link>
+				<pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/lessons/tdc-sp-2026-airflow-erros/</guid>
+				<description>&lt;p&gt;Apresentação realizada na trilha de Engenharia de Dados do &lt;a href=&#34;https://thedevconf.com/tdc/2026/sao-paulo/trilha-engenharia-de-dados&#34;&gt;TDC São Paulo 2026&lt;/a&gt;, no ProMagno.&lt;/p&gt;&#xA;&lt;p&gt;Cinco erros que cometi ao colocar o Apache Airflow em produção, entre decisões de arquitetura, limites de escala e rotina de operação. Serve a quem está montando orquestração de dados fora do tutorial.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/18PwTbgLbzz8U2mHgYJiO06Yi_GxXzdzsbqXnJ1PTMP0/edit?usp=drive_link&#34;&gt;Acessar slides&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;fontes--leitura-extra&#34;&gt;Fontes &amp;amp; leitura extra&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://airflow.apache.org/docs/&#34;&gt;Documentação do Apache Airflow&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.astronomer.io/docs/&#34;&gt;Documentação da Astronomer&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.astronomer.io/blog/debunking-myths-about-airflows-use-cases/&#34;&gt;Debunking myths about Airflow&amp;rsquo;s use cases&lt;/a&gt; — blog da Astronomer&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://academy.astronomer.io/path/airflow-101&#34;&gt;Airflow 101&lt;/a&gt; — curso gratuito no Astronomer Academy&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Vector Databases</title>
+				<link>http://localhost:1313/hea/databases/vector-databases/</link>
+				<pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/hea/databases/vector-databases/</guid>
+				<description>&lt;p&gt;Hoje li um texto sobre banco de dados vetoriais e no que ele difere de um comum banco transacional estilo SQL e onde essa diferenca e benefica em cenarios como AI, RAG e outros.&lt;/p&gt;&#xA;&lt;p&gt;O texto comeca fazendo uma distincao de buscas comuns e eficazes em bancos transacionais como &amp;ldquo;Buscar emails de clientes nessas condicoes&amp;rdquo; e buscas como &amp;ldquo;documentos similares a este&amp;rdquo; ou &amp;ldquo;as secoes mais relevantes de um livro dado um topico&amp;rdquo;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Usando Book-to-Skill no meu fluxo de aprendizado</title>
+				<link>http://localhost:1313/hea/claude/book-to-skill/</link>
+				<pubDate>Sun, 21 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/hea/claude/book-to-skill/</guid>
+				<description>&lt;p&gt;Recentemente um colega de trabalho me apresentou esse repositório &lt;a href=&#34;https://github.com/virgiliojr94/book-to-skill&#34;&gt;https://github.com/virgiliojr94/book-to-skill&lt;/a&gt; pensando em usá-lo para construir instrumentos para apoiar nosso trabalho na ImpulsoGov.&lt;/p&gt;&#xA;&lt;p&gt;Pedir para o modelo referenciar livros costuma funcionar, mas deixar já estruturado em skills não só facilita quando você quer deixar registrado o conhecimento sem torrar muito token, por exemplo: &amp;ldquo;Usar Skill do livro Fundamentos de Qualidade de Dados do capítulo 4&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;Esse repositório também tem um ótimo benefício de já ter casos específicos de parsing, dependendo do formato e tamanho do arquivo, isso já pula algumas etapas do agente tentar coisas e falhar até chegar na estratégia que funciona pro arquivo.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Matriz de Poder-Interesse para Stakeholders</title>
+				<link>http://localhost:1313/hea/gestao/matriz-poder-interesse/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/hea/gestao/matriz-poder-interesse/</guid>
+				<description>&lt;p&gt;Util para classificar stakeholders em dois eixos: &lt;strong&gt;poder&lt;/strong&gt; (capacidade de impactar o projeto) e &lt;strong&gt;interesse&lt;/strong&gt; (engajamento com o que está sendo construído)&lt;/p&gt;&#xA;&lt;h2 id=&#34;os-quatro-quadrantes&#34;&gt;Os quatro quadrantes&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Alto poder, baixo interesse → Manter satisfeito&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Chamados de &lt;em&gt;latents&lt;/em&gt;. Não estão engajados agora, mas têm capacidade de interferir no projeto se quiserem. Vale consultá-los para garantir que seus interesses sejam observados. se perceberem que o trabalho os afeta, podem se envolver de repente.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Alto poder, alto interesse → Gerenciar de perto&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Flappy Bird Clone para Game Boy</title>
+				<link>http://localhost:1313/projects/flappy-bird-clone-gba/</link>
+				<pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/projects/flappy-bird-clone-gba/</guid>
+				<description>&lt;p&gt;Um clone pequeno de Flappy Bird feito para Game Boy Advance, escrito em Rust com a crate &lt;a href=&#34;https://github.com/agbrs/agb&#34;&gt;&lt;code&gt;agb&lt;/code&gt;&lt;/a&gt;. A versão abaixo roda direto no navegador via &lt;a href=&#34;https://emulatorjs.org/&#34;&gt;EmulatorJS&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;div class=&#34;gba-embed&#34;&gt;&#xA;  &lt;iframe&#xA;    src=&#34;http://localhost:1313/games/flappy-bem-te-vi/&#34;&#xA;    title=&#34;Flappy Bem-te-vi&#34;&#xA;    loading=&#34;lazy&#34;&#xA;    allowfullscreen&gt;&#xA;  &lt;/iframe&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Links do projeto:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/games/flappy-bem-te-vi/flappy-bem-te-vi.gba&#34;&gt;Baixar ROM GBA&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/Alexsandr0x/flappy-bem-te-vi&#34;&gt;Repositório no GitHub&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Construindo o Pipeline de Dados da ImpulsoGov</title>
+				<link>http://localhost:1313/lessons/semana-eng-usp-saocarlos-2025/</link>
+				<pubDate>Wed, 15 Oct 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/lessons/semana-eng-usp-saocarlos-2025/</guid>
+				<description>&lt;p&gt;Apresentação realizada em nome da &lt;a href=&#34;https://www.impulsogov.org/&#34;&gt;ImpulsoGov&lt;/a&gt; na Semana de Engenharia de Computação da USP São Carlos.&lt;/p&gt;&#xA;&lt;p&gt;A palestra conta como o pipeline de dados da organização foi construído: por que escolhemos cada ferramenta, o que a arquitetura precisou resolver e o que aprendemos ao estruturar engenharia de dados dentro da saúde pública.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Introdução ao IEEE VSSS com FIRASim</title>
+				<link>http://localhost:1313/lessons/intro-ieee-vsss-firasim/</link>
+				<pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/lessons/intro-ieee-vsss-firasim/</guid>
+				<description>&lt;p&gt;Aula introdutória ministrada para a equipe de robótica &lt;a href=&#34;https://github.com/project-neon&#34;&gt;Project Neon&lt;/a&gt; da Universidade Federal do ABC, sobre a modalidade IEEE VSSS e o simulador FIRASim, com os primeiros passos para escrever um cliente Python que conversa com o ambiente simulado.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://drive.google.com/file/d/1kGUXxK4I4Ho-X7X4HZUc45JiV2RIhDsV&#34;&gt;Acessar slides&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Contato</title>
+				<link>http://localhost:1313/contact/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/contact/</guid>
+				<description>&lt;h2 id=&#34;sobre-o-quê&#34;&gt;Sobre o quê&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Convites para palestras e aulas.&lt;/li&gt;&#xA;&lt;li&gt;Projetos de educação em tecnologia.&lt;/li&gt;&#xA;&lt;li&gt;Consultoria e projetos.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Portfólio</title>
+				<link>http://localhost:1313/portfolio/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/portfolio/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Sobre</title>
+				<link>http://localhost:1313/about/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/about/</guid>
+				<description>&lt;figure class=&#34;photo&#34;&gt;&#xA;  &lt;picture&gt;&#xA;    &lt;source media=&#34;(prefers-reduced-motion: reduce)&#34; srcset=&#34;http://localhost:1313/images/about/alex-crt-static.jpg&#34;&gt;&#xA;    &lt;img src=&#34;http://localhost:1313/images/about/alex-crt.gif&#34; width=&#34;400&#34; height=&#34;400&#34; alt=&#34;Foto de Alexsandro, com efeito de glitch&#34;&gt;&#xA;  &lt;/picture&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h2 id=&#34;olá-pode-me-chamar-alex-d&#34;&gt;Olá! Pode me chamar Alex :D&lt;/h2&gt;&#xA;&lt;p&gt;Sou Alexsandro, mas todo mundo me chama de Alex. Coordenador de Dados e Tech Lead na &lt;a href=&#34;https://www.impulsogov.org/&#34;&gt;ImpulsoGov&lt;/a&gt;, onde cuido da arquitetura do nosso Data Warehouse, pipelines de dados e infraestrutura Cloud aplicados à saúde pública.&lt;/p&gt;&#xA;&lt;p&gt;Outros interesses técnicos: arquitetura de software, sistemas orientados a eventos, Rust, impressão 3D e hardware vintage (principalmente Game Boy Advance).&lt;/p&gt;&#xA;&lt;h2 id=&#34;professor&#34;&gt;Professor&lt;/h2&gt;&#xA;&lt;p&gt;Dou aula há anos, de programação básica a engenharia de dados. Se você toca um projeto de educação em tecnologia e precisa de uma mão, &lt;a href=&#34;https://linkedin.com/in/Alexsandr0x&#34;&gt;me chama no LinkedIn&lt;/a&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

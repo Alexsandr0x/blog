@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects on Alexsandro</title><link>https://alexsandro.dev/en/projects/</link><description>Recent content in Projects on Alexsandro</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 12 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://alexsandro.dev/en/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>Flappy Bird Clone for Game Boy</title><link>https://alexsandro.dev/en/projects/flappy-bird-clone-gba/</link><pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/en/projects/flappy-bird-clone-gba/</guid><description>A small Flappy Bird clone for Game Boy Advance, written in Rust with the agb crate. The version below runs directly in the browser through EmulatorJS.
-Project links:
-Download GBA ROM GitHub repository</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Projects on Alexsandro</title>
+		<link>http://localhost:1313/en/projects/</link>
+		<description>Recent content in Projects on Alexsandro</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 12 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/en/projects/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Flappy Bird Clone for Game Boy</title>
+				<link>http://localhost:1313/en/projects/flappy-bird-clone-gba/</link>
+				<pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/en/projects/flappy-bird-clone-gba/</guid>
+				<description>&lt;p&gt;A small Flappy Bird clone for Game Boy Advance, written in Rust with the &lt;a href=&#34;https://github.com/agbrs/agb&#34;&gt;&lt;code&gt;agb&lt;/code&gt;&lt;/a&gt; crate. The version below runs directly in the browser through &lt;a href=&#34;https://emulatorjs.org/&#34;&gt;EmulatorJS&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;div class=&#34;gba-embed&#34;&gt;&#xA;  &lt;iframe&#xA;    src=&#34;http://localhost:1313/games/flappy-bem-te-vi/&#34;&#xA;    title=&#34;Flappy Bem-te-vi&#34;&#xA;    loading=&#34;lazy&#34;&#xA;    allowfullscreen&gt;&#xA;  &lt;/iframe&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Project links:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/games/flappy-bem-te-vi/flappy-bem-te-vi.gba&#34;&gt;Download GBA ROM&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/Alexsandr0x/flappy-bem-te-vi&#34;&gt;GitHub repository&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+	</channel>
+</rss>

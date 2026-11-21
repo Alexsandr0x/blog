@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>pt-br on Alexsandro</title><link>https://alexsandro.dev/tags/pt-br/</link><description>Recent content in pt-br on Alexsandro</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://alexsandro.dev/tags/pt-br/index.xml" rel="self" type="application/rss+xml"/><item><title>Sobre</title><link>https://alexsandro.dev/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/about/</guid><description>Olá! Pode me chamar Alex :D Sou Alexsandro, mas eu prefiro Alex.
-Sou um cara de tecnologia interessando em um tanto de coisas, mas principalmente a area de dados. Atualmente sou um engenheiro de dados mid-senior e tentando evoluir em areas como arquitetura de software.
-Outros interesses tecnicos que tenho são robotica, impressão 3D, Python e event driven systems.
-Robôs Boleiros ?! Se você é interessado em sistemas multi-robóticos pode aprender um pouco mais com meus projetos na equipe de Robotica Neon da Universidade Federal do ABC!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Pt-Br on Alexsandro</title>
+		<link>http://localhost:1313/tags/pt-br/</link>
+		<description>Recent content in Pt-Br on Alexsandro</description>
+		<generator>Hugo</generator>
+		<language>pt-BR</language>
+		
+		
+		
+		
+			<atom:link href="http://localhost:1313/tags/pt-br/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Sobre</title>
+				<link>http://localhost:1313/about/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/about/</guid>
+				<description>&lt;figure class=&#34;photo&#34;&gt;&#xA;  &lt;picture&gt;&#xA;    &lt;source media=&#34;(prefers-reduced-motion: reduce)&#34; srcset=&#34;http://localhost:1313/images/about/alex-crt-static.jpg&#34;&gt;&#xA;    &lt;img src=&#34;http://localhost:1313/images/about/alex-crt.gif&#34; width=&#34;400&#34; height=&#34;400&#34; alt=&#34;Foto de Alexsandro, com efeito de glitch&#34;&gt;&#xA;  &lt;/picture&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h2 id=&#34;olá-pode-me-chamar-alex-d&#34;&gt;Olá! Pode me chamar Alex :D&lt;/h2&gt;&#xA;&lt;p&gt;Sou Alexsandro, mas todo mundo me chama de Alex. Coordenador de Dados e Tech Lead na &lt;a href=&#34;https://www.impulsogov.org/&#34;&gt;ImpulsoGov&lt;/a&gt;, onde cuido da arquitetura do nosso Data Warehouse, pipelines de dados e infraestrutura Cloud aplicados à saúde pública.&lt;/p&gt;&#xA;&lt;p&gt;Outros interesses técnicos: arquitetura de software, sistemas orientados a eventos, Rust, impressão 3D e hardware vintage (principalmente Game Boy Advance).&lt;/p&gt;&#xA;&lt;h2 id=&#34;professor&#34;&gt;Professor&lt;/h2&gt;&#xA;&lt;p&gt;Dou aula há anos, de programação básica a engenharia de dados. Se você toca um projeto de educação em tecnologia e precisa de uma mão, &lt;a href=&#34;https://linkedin.com/in/Alexsandr0x&#34;&gt;me chama no LinkedIn&lt;/a&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

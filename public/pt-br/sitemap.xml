@@ -1,1 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://alexsandro.dev/</loc><lastmod>2026-05-12T00:00:00+00:00</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/"/></url><url><loc>https://alexsandro.dev/projects/flappy-bird-clone-gba/</loc><lastmod>2026-05-12T00:00:00+00:00</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/projects/flappy-bird-clone-gba/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/projects/flappy-bird-clone-gba/"/></url><url><loc>https://alexsandro.dev/projects/</loc><lastmod>2026-05-12T00:00:00+00:00</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/projects/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/projects/"/></url><url><loc>https://alexsandro.dev/lessons/</loc><lastmod>2025-10-15T00:00:00+00:00</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/lessons/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/lessons/"/></url><url><loc>https://alexsandro.dev/lessons/semana-eng-usp-saocarlos-2025/</loc><lastmod>2025-10-15T00:00:00+00:00</lastmod></url><url><loc>https://alexsandro.dev/posts/python-parallelism/python-parallelism/</loc><lastmod>2022-12-28T00:00:00+00:00</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/posts/python-parallelism/python-parallelism/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/posts/python-parallelism/python-parallelism/"/></url><url><loc>https://alexsandro.dev/posts/</loc><lastmod>2022-12-28T00:00:00+00:00</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/posts/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/posts/"/></url><url><loc>https://alexsandro.dev/posts/web-scrapping-letras/web-scrapping-letras/</loc><lastmod>2018-09-01T00:00:00+00:00</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/posts/web-scrapping-letras/web-scrapping-letras/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/posts/web-scrapping-letras/web-scrapping-letras/"/></url><url><loc>https://alexsandro.dev/tags/about/</loc><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/tags/about/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/tags/about/"/></url><url><loc>https://alexsandro.dev/categories/</loc><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/categories/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/categories/"/></url><url><loc>https://alexsandro.dev/tags/en/</loc><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/tags/en/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/tags/en/"/></url><url><loc>https://alexsandro.dev/tags/posts/</loc></url><url><loc>https://alexsandro.dev/tags/pt-br/</loc></url><url><loc>https://alexsandro.dev/about/</loc><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/about/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/about/"/></url><url><loc>https://alexsandro.dev/tags/</loc><xhtml:link rel="alternate" hreflang="en" href="https://alexsandro.dev/en/tags/"/><xhtml:link rel="alternate" hreflang="pt-br" href="https://alexsandro.dev/tags/"/></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="http://localhost:1313/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="http://localhost:1313/en/"/>
+  </url>
+  <url>
+    <loc>http://localhost:1313/lessons/feira-empreendedor-sebrae-sp-2026/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/lessons/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="http://localhost:1313/lessons/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="http://localhost:1313/en/lessons/"/>
+  </url>
+  <url>
+    <loc>http://localhost:1313/lessons/tdc-sp-2026-airflow-erros/</loc>
+    <lastmod>2026-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/hea/</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/hea/databases/vector-databases/</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/hea/claude/book-to-skill/</loc>
+    <lastmod>2026-06-21</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/hea/gestao/matriz-poder-interesse/</loc>
+    <lastmod>2026-05-31</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/flappy-bird-clone-gba/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="http://localhost:1313/projects/flappy-bird-clone-gba/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="http://localhost:1313/en/projects/flappy-bird-clone-gba/"/>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="http://localhost:1313/projects/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="http://localhost:1313/en/projects/"/>
+  </url>
+  <url>
+    <loc>http://localhost:1313/lessons/semana-eng-usp-saocarlos-2025/</loc>
+    <lastmod>2025-10-15</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/lessons/intro-ieee-vsss-firasim/</loc>
+    <lastmod>2023-03-01</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="http://localhost:1313/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="http://localhost:1313/en/contact/"/>
+  </url>
+  <url>
+    <loc>http://localhost:1313/portfolio/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="http://localhost:1313/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="http://localhost:1313/en/portfolio/"/>
+  </url>
+  <url>
+    <loc>http://localhost:1313/about/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="http://localhost:1313/about/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="http://localhost:1313/en/about/"/>
+  </url>
+</urlset>

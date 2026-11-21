@@ -1,1 +1,122 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Alexsandro</title><link>https://alexsandro.dev/tags/</link><description>Recent content in Tags on Alexsandro</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://alexsandro.dev/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>about</title><link>https://alexsandro.dev/tags/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/tags/about/</guid><description/></item><item><title>en</title><link>https://alexsandro.dev/tags/en/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/tags/en/</guid><description/></item><item><title>posts</title><link>https://alexsandro.dev/tags/posts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/tags/posts/</guid><description/></item><item><title>pt-br</title><link>https://alexsandro.dev/tags/pt-br/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alexsandro.dev/tags/pt-br/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on Alexsandro</title>
+		<link>http://localhost:1313/tags/</link>
+		<description>Recent content in Tags on Alexsandro</description>
+		<generator>Hugo</generator>
+		<language>pt-BR</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 13 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>AI</title>
+				<link>http://localhost:1313/tags/ai/</link>
+				<pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/ai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Databases</title>
+				<link>http://localhost:1313/tags/databases/</link>
+				<pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/databases/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Vector-Databases</title>
+				<link>http://localhost:1313/tags/vector-databases/</link>
+				<pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/vector-databases/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Claude</title>
+				<link>http://localhost:1313/tags/claude/</link>
+				<pubDate>Sun, 21 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/claude/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ferramentas</title>
+				<link>http://localhost:1313/tags/ferramentas/</link>
+				<pubDate>Sun, 21 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/ferramentas/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Llm</title>
+				<link>http://localhost:1313/tags/llm/</link>
+				<pubDate>Sun, 21 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/llm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Produtividade</title>
+				<link>http://localhost:1313/tags/produtividade/</link>
+				<pubDate>Sun, 21 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/produtividade/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Frameworks</title>
+				<link>http://localhost:1313/tags/frameworks/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/frameworks/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Gestao</title>
+				<link>http://localhost:1313/tags/gestao/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/gestao/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Lideranca</title>
+				<link>http://localhost:1313/tags/lideranca/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/lideranca/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Stakeholders</title>
+				<link>http://localhost:1313/tags/stakeholders/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/stakeholders/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>En</title>
+				<link>http://localhost:1313/tags/en/</link>
+				<pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/en/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Posts</title>
+				<link>http://localhost:1313/tags/posts/</link>
+				<pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/posts/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>About</title>
+				<link>http://localhost:1313/tags/about/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/about/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Pt-Br</title>
+				<link>http://localhost:1313/tags/pt-br/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/tags/pt-br/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>
